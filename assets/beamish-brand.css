@@ -71,3 +71,26 @@ body.ref-is-home:not(.home-revealed) .ref-home>:not(.ref-hero),body.ref-is-home:
 .ref-vibe{scroll-margin-top:90px}.ref-vibe h2:focus{outline:none}
 @media(max-width:760px){body.ref-is-home .ref-hero{background-position:60% center!important}body.ref-is-home .ref-hero:before{background:linear-gradient(90deg,#000c,#0005 70%,#0002)!important}body.ref-is-home .ref-hero-copy{width:100%;padding:85px 6% 28px}body.ref-is-home .ref-hero h1{font-size:clamp(44px,12vw,70px);line-height:.94}body.ref-is-home .ref-handwriting{font-size:30px;margin:22px 0 28px 5%!important}body.ref-is-home .ref-proof{font-size:9px;gap:13px;margin-top:20px}.ref-vibe{scroll-margin-top:80px}}
 @media(max-height:650px) and (min-width:761px){body.ref-is-home .ref-hero h1{font-size:min(5.2vw,68px)}body.ref-is-home .ref-handwriting{font-size:27px;margin-bottom:10px!important}body.ref-is-home .ref-hero-copy{padding-top:60px;padding-bottom:15px}}
+/* Keep the fullscreen hero edge-to-edge even above the old 1700px content limit. */
+body.ref-is-home .ref-home{width:100%!important;max-width:none!important;margin:0!important}
+body.ref-is-home .ref-hero{width:100%!important;max-width:none!important;margin:0!important;left:0!important;transform:none!important;border:0!important;border-radius:0!important}
+/* Each navigation element adapts to the image directly behind it. */
+body.ref-is-home .site-header.ref-header:not(.is-scrolled) .ref-nav a.on-dark-surface{color:#fff!important;text-shadow:0 1px 4px #0005!important}
+body.ref-is-home .site-header.ref-header:not(.is-scrolled) .ref-nav a.on-dark-surface:hover,body.ref-is-home .site-header.ref-header:not(.is-scrolled) .ref-nav a.on-dark-surface[aria-current="page"]{color:#e5df00!important}
+body.ref-is-home .site-header.ref-header:not(.is-scrolled) .ref-button.navy.on-dark-surface{background:#fff!important;color:#0f22f2!important;border-color:#fff!important}
+body.ref-is-home .site-header.ref-header.menu-open .ref-nav a:not(.on-dark-surface){color:#000!important;text-shadow:none!important}
+body.ref-is-home .site-header.ref-header.menu-open .ref-nav a:not(.on-dark-surface):hover,body.ref-is-home .site-header.ref-header.menu-open .ref-nav a[aria-current="page"]{color:#0f22f2!important}
+
+/* Unified public navigation and more breathing room for the Jobs banner title. */
+body .site-header.ref-header:not(.is-scrolled){background:transparent!important;box-shadow:none!important}
+body .site-header.ref-header:not(.is-scrolled) .ref-nav a.on-dark-surface{color:#fff!important;text-shadow:0 1px 4px #0005!important}
+body .site-header.ref-header:not(.is-scrolled) .ref-nav a.on-dark-surface:hover,body .site-header.ref-header:not(.is-scrolled) .ref-nav a.on-dark-surface[aria-current="page"]{color:#e5df00!important}
+body .site-header.ref-header:not(.is-scrolled) .ref-button.white.on-dark-surface{color:#fff!important;border-color:#fff!important}
+body .site-header.ref-header:not(.is-scrolled) .ref-button.navy.on-dark-surface{background:#fff!important;color:#0f22f2!important;border-color:#fff!important}
+body .site-header.ref-header:not(.is-scrolled) .ref-search-icon.on-dark-surface,body .site-header.ref-header:not(.is-scrolled) .ref-menu.on-dark-surface{color:#fff!important}
+.rj-landing-copy{transform:translateY(22px)}.rj-restored-layout .rj-banner{background:#fff!important}
+@media(max-width:760px){.rj-landing-copy{transform:none;padding-top:18px}}
+/* Stronger glass blur with a feathered lower edge instead of a hard navigation bar. */
+body .site-header.ref-header.is-scrolled,body.ref-is-home .site-header.ref-header.is-scrolled{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;box-shadow:none!important;isolation:isolate;overflow:visible}
+body .site-header.ref-header.is-scrolled:before{content:'';position:absolute;inset:-16px 0 -26px;z-index:-1;pointer-events:none;background:rgba(255,255,255,.64);backdrop-filter:blur(38px) saturate(115%);-webkit-backdrop-filter:blur(38px) saturate(115%);mask-image:linear-gradient(to bottom,#000 0%,#000 62%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 62%,transparent 100%)}
+@media(prefers-reduced-transparency:reduce){body .site-header.ref-header.is-scrolled:before{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none}}
