@@ -1,0 +1,24 @@
+# OS / editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Dependencies / temporary build output
+node_modules/
+.netlify/
+dist/
+build/
+coverage/
+
+# Local secrets, logs and environment files
+.env
+.env.*
+!.env.example
+*.log
+
+# Python test caches
+__pycache__/
+.pytest_cache/
+*.pyc

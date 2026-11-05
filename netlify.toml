@@ -1,0 +1,8 @@
+# Beamish static prototype; publish the contents of this folder.
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
