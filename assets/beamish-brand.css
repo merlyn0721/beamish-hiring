@@ -32,3 +32,30 @@ body .ref-header .ref-button.white{background:transparent!important;color:#0f22f
 body .ref-header .ref-button.white.on-dark-surface,body.ref-is-home .ref-header .ref-button.white.on-dark-surface{color:#fff!important;border-color:#fff!important;text-shadow:0 1px 3px #0005}
 body .ref-header .ref-search-icon.on-dark-surface,body .ref-header .ref-menu.on-dark-surface,body.ref-is-home .ref-header .ref-search-icon.on-dark-surface,body.ref-is-home .ref-header .ref-menu.on-dark-surface{color:#fff!important}
 body.ref-is-home .ref-header .ref-search-icon:not(.on-dark-surface),body.ref-is-home .ref-header .ref-menu:not(.on-dark-surface){color:#0f22f2!important}
+/* Clean white canvas, generous section spacing, and electric-blue footer. */
+:root,body{--bg:#fff!important;--v24-bg:#fff!important}
+body,body.ref-is-home,body.ref-is-jobs,.ref-home,.ref-vibe,.ref-companies,.ref-search-area,.rj-page,.v24-page{background:#fff!important}
+body .site-header.ref-header{background:#fff!important}
+body.ref-is-home .site-header.ref-header,body.ref-is-home .site-header.ref-header:not(.is-scrolled),body.ref-is-home .site-header.ref-header.is-scrolled{background:transparent!important}
+.ref-home .ref-vibe{margin-top:38px;margin-bottom:30px;padding-top:25px;padding-bottom:30px}
+.ref-home .ref-search-area{margin-top:10px;margin-bottom:50px;padding-top:28px;padding-bottom:35px;border-bottom:0}
+.ref-home .ref-trending{margin-top:45px;margin-bottom:65px}
+.ref-home .ref-companies{margin-top:0;margin-bottom:65px;padding-top:18px;padding-bottom:18px}
+.ref-home .ref-dual{margin-top:0;margin-bottom:65px}
+.ref-home .ref-topics{margin-top:0;margin-bottom:65px}
+.ref-home .ref-job,.ref-home .ref-company,.ref-home .ref-story,.rj-face{border-color:#e4e4e4!important;box-shadow:0 3px 14px #00000005}
+.ref-home .ref-searchbox{border:1px solid #ededed;box-shadow:0 4px 20px #00000004}
+.rj-wire-layout .rj-banner{background:#fff!important;padding-top:38px;padding-bottom:35px;border-bottom:0}
+.rj-wire-layout .rj-layout{padding-bottom:60px}.rj-wire-layout .rj-results-toolbar{margin-bottom:25px}.rj-wire-layout .rj-grid{row-gap:32px}
+.rj-filter-drawer>summary{background:#fff!important}.rj-filter-drawer>.rj-filters{background:#fff!important}
+body .footer.ref-footer,body .footer{background:#0f22f2!important;color:#fff!important;padding-top:65px!important}
+.ref-footer-columns>div>a,.ref-footer-columns>div>p,.ref-footer-bottom{color:#fff!important}.ref-footer-bottom{border-color:#ffffff35!important}.ref-footer-columns>div>b,.ref-social-links a{color:#fff!important}
+@media(max-width:760px){.ref-home .ref-vibe{margin-top:26px;margin-bottom:22px;padding-top:20px;padding-bottom:22px}.ref-home .ref-search-area{margin-bottom:35px;padding-top:15px;padding-bottom:25px}.ref-home .ref-trending{margin-top:25px;margin-bottom:40px}.ref-home .ref-companies{margin-bottom:40px}.ref-home .ref-dual{margin-bottom:40px}.ref-home .ref-topics{margin-bottom:40px}.rj-wire-layout .rj-banner{padding-top:28px;padding-bottom:28px}.rj-wire-layout .rj-layout{padding-bottom:40px}.rj-wire-layout .rj-grid{row-gap:20px}body .footer.ref-footer{padding-top:45px!important}}
+/* Frosted navigation after scrolling keeps the underlying content from competing with links. */
+body .site-header.ref-header.is-scrolled,body.ref-is-home .site-header.ref-header.is-scrolled{background:rgba(255,255,255,.84)!important;backdrop-filter:blur(20px) saturate(120%)!important;-webkit-backdrop-filter:blur(20px) saturate(120%)!important;box-shadow:0 1px 14px #00000009!important;border-bottom:1px solid #00000008!important}
+body .ref-header.is-scrolled .ref-nav a,body.ref-is-home .ref-header.is-scrolled .ref-nav a,body.ref-is-home .ref-header.is-scrolled.over-hero .ref-nav a{color:#000!important;text-shadow:none!important}
+body .ref-header.is-scrolled .ref-button.white,body.ref-is-home .ref-header.is-scrolled .ref-button.white{color:#0f22f2!important;border-color:#0f22f2!important;text-shadow:none!important}
+body .ref-header.is-scrolled .ref-search-icon,body .ref-header.is-scrolled .ref-menu,body.ref-is-home .ref-header.is-scrolled .ref-search-icon,body.ref-is-home .ref-header.is-scrolled .ref-menu{color:#0f22f2!important}
+body .ref-header.is-scrolled img.beamish-brand-logo{filter:none!important}
+@media(prefers-reduced-transparency:reduce){body .site-header.ref-header.is-scrolled,body.ref-is-home .site-header.ref-header.is-scrolled{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+.ref-home .ref-topics{background:#fff!important}
