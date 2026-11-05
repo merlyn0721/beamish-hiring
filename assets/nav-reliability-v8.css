@@ -1,0 +1,51 @@
+/* Beamish v8: reliable desktop flyouts and keyboard/touch navigation.
+   No gap is allowed between the main item and its submenu. */
+@media(min-width:741px){
+  .side .navItem, .side .navitem, .sidebar .navitem {position:relative}
+  .side .navItem>.flyout, .sidebar .navitem>.flyout {
+    left:calc(100% - 1px)!important;
+    margin-left:0!important;
+    max-height:min(75vh,640px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    z-index:110!important;
+  }
+  .side .navItem.nav-open>.flyout,
+  .sidebar .navitem.nav-open>.flyout {display:grid!important;gap:3px}
+  .side .navItem>.navBtn,
+  .sidebar .navitem>.navbutton {padding-right:41px!important}
+  .beamish-nav-expander {
+    position:absolute;top:6px;right:7px;width:31px;height:32px;
+    z-index:3;border:0;border-radius:8px;background:transparent;
+    color:#727989;display:flex;align-items:center;justify-content:center;
+    font-size:20px;font-weight:900;cursor:pointer;
+  }
+  .beamish-nav-expander:hover,.beamish-nav-expander:focus-visible,
+  .nav-open>.beamish-nav-expander {background:#eef0ff;color:#0f22f2}
+  .navItem:has(>.navBtn.active)>.beamish-nav-expander,
+  .navitem:has(>.navbutton.active)>.beamish-nav-expander {color:#fff}
+  .navItem:has(>.navBtn.active)>.beamish-nav-expander:hover,
+  .navitem:has(>.navbutton.active)>.beamish-nav-expander:hover {color:#0f22f2}
+  .sidebar .navitem>.navbutton .caret {display:none}
+  .side .navItem>.flyout button:focus-visible,
+  .sidebar .navitem>.flyout button:focus-visible {
+    outline:2px solid #0f22f2;outline-offset:1px;background:#eef0ff;
+  }
+}
+@media(max-width:740px){
+  .beamish-nav-expander{display:none!important}
+  /* Native page subtabs remain scrollable and tappable. */
+  .subtabs, .subtab, .tabsLine, .tabbar {scrollbar-width:thin;overscroll-behavior-x:contain}
+}
+/* Backend: 7 CMS categories must stay in one scrollable mobile row. */
+@media(max-width:740px){
+  .mobilebar{display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity;scrollbar-width:thin}
+  .mobilebar>button{flex:0 0 73px!important;min-width:73px;scroll-snap-align:start}
+}
+/* Employer/Candidate sidebars may still be visible between 701px and 740px. */
+@media(min-width:701px) and (max-width:740px){
+  .side .navItem>.flyout{left:calc(100% - 1px)!important;margin-left:0!important}
+  .side .navItem.nav-open>.flyout{display:grid!important}
+  .side .navItem>.navBtn{padding-right:41px!important}
+  .side .navItem>.beamish-nav-expander{display:flex!important}
+}

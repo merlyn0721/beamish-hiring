@@ -1,0 +1,87 @@
+/* Beamish v14 — unified interaction design on top of the original v12 visual system */
+:root{--beamish-blue:#0f22f2;--beamish-yellow:#e5df00;--beamish-ink:#0f1424;--beamish-border:#e1e6ef;--beamish-ease:cubic-bezier(.2,.8,.2,1)}
+html{scroll-behavior:smooth}
+body{color:var(--beamish-ink);-webkit-font-smoothing:antialiased}
+:where(button,a,input,select,textarea,[role="button"]):focus-visible{outline:3px solid #e5df00!important;outline-offset:3px!important}
+:where(button,a,[role="button"]){-webkit-tap-highlight-color:transparent}
+:where(button,.btn,.v17-primary,.v17-secondary,[role="button"]){transition:transform .18s var(--beamish-ease),background-color .18s,border-color .18s,box-shadow .18s}
+:where(button,.btn,.v17-primary,.v17-secondary):not([disabled]):hover{filter:brightness(.99)}
+:where(.card,.panel,.v9-panel,.v17-card){border-color:var(--beamish-border)}
+:where(.card,.panel,.v9-panel,.v17-card,.hm-job,.company-card,.v9-post){box-shadow:0 5px 22px rgba(21,31,60,.035)}
+:where(input,select,textarea){accent-color:var(--beamish-blue)}
+:where(.v17-profile-shell,.v17-community-layout,.v17-public-jobs-shell,.v17-candidate-jobs-shell){animation:beamish-arrive .22s var(--beamish-ease) both}
+@keyframes beamish-arrive{from{opacity:.65;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+/* Candidate & Employer app: reinforce a restrained card/side-navigation system */
+body[data-beamish-surface="candidate"] .side,
+body[data-beamish-surface="employer"] .side{border-right:1px solid #e5e9f1}
+body[data-beamish-surface="candidate"] .content,
+body[data-beamish-surface="employer"] .content{background:#f8fafe}
+body[data-beamish-surface="candidate"] :is(.card,.v17-candidate-jobs-shell),
+body[data-beamish-surface="employer"] :is(.card,.v9-panel){border-radius:16px}
+body[data-beamish-surface="candidate"] .mainScroll,
+body[data-beamish-surface="employer"] .mainScroll{scrollbar-color:#d7deea transparent;scrollbar-width:thin}
+body[data-beamish-surface="candidate"] .sideNav button,
+body[data-beamish-surface="employer"] .sideNav button{border-radius:11px}
+/* Member-only Messenger sits above the blue round AI Help bubble. */
+#bs-assist-root{right:18px!important;bottom:18px!important}
+#bs-assist-root .bs-trigger{position:relative!important;width:53px!important;height:53px!important;min-width:53px!important;min-height:53px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;gap:0!important;box-shadow:0 12px 29px rgba(15,34,242,.23)!important}
+#bs-assist-root .bs-trigger span:not(.bs-online){display:none!important}
+#bs-assist-root .bs-panel{border-radius:20px!important;box-shadow:0 22px 60px rgba(13,22,46,.23)!important}
+.bm-chat-trigger{right:18px!important;bottom:88px!important;width:52px!important;height:52px!important;border-radius:50%!important;background:#fff!important;color:#0f22f2!important;border:1px solid #dae1ee!important;box-shadow:0 9px 24px rgba(14,28,55,.17)!important}
+.bm-float{right:18px!important;bottom:153px!important;border-radius:19px!important;box-shadow:0 22px 65px rgba(14,28,55,.24)!important}
+.bm-logout{display:none!important}
+/* Job summary is hover/focus discoverable; View Job remains a proper click action. */
+.v17-job-card .v17-job-actions{isolation:isolate}
+.v17-job-card .v17-view:focus-visible+.v17-job-hover,
+.v17-job-card .v17-view-link:focus-visible+.v17-job-hover{opacity:1;visibility:visible;transform:translateY(0)}
+.v17-job-hover{width:min(320px,calc(100vw - 90px));pointer-events:none;line-height:1.6}
+.v17-job-card{border-radius:19px!important;overflow:visible}
+.v17-job-cover{border-radius:18px 18px 0 0}
+/* Compact public entry: No duplicated start quiz or standalone vibe section before user choice. */
+body[data-beamish-surface="public"] .v17-public-teaser{margin:20px auto 28px}
+body[data-beamish-surface="public"] .hm-hero-quiz{scroll-margin-top:72px}
+body[data-beamish-surface="public"] .v17-public-jobs-shell{max-width:1320px;margin:auto}
+body[data-beamish-surface="public"] .v17-public-jobs-grid{align-items:stretch}
+/* Employer Community: unify with the candidate's portrait-friendly grid */
+body[data-beamish-surface="employer"] .feed{gap:14px;align-items:start}
+body[data-beamish-surface="employer"] .post{background:#fff;border:1px solid #e1e7ef;box-shadow:0 7px 25px #0d18320a;border-radius:18px;overflow:hidden;transition:transform .16s,box-shadow .16s}
+body[data-beamish-surface="employer"] .post:hover{transform:translateY(-2px);box-shadow:0 14px 29px #0d18321c}
+body[data-beamish-surface="employer"] .post>img{display:block;aspect-ratio:4/3;width:100%;object-fit:cover}
+body[data-beamish-surface="employer"] .postbody{padding:15px}
+body[data-beamish-surface="employer"] .postbody h3{font-size:17px;letter-spacing:-.025em;line-height:1.3;margin:10px 0 6px}
+body[data-beamish-surface="employer"] .v10-view-btn{display:flex;flex-wrap:wrap;gap:5px}
+/* Profile relocation and trust sit within the profile header: don't repeat outside. */
+body[data-beamish-surface="candidate"] .v17-profile-tools{gap:10px}
+body[data-beamish-surface="candidate"] .v17-profile-shell .v17-profile-content-grid{margin-bottom:20px}
+body[data-beamish-surface="candidate"] .v17-profile-shell .v17-profile-banner img{object-position:center 38%}
+/* Auth and backend: calm surfaces + consistent tap targets */
+body[data-beamish-surface="auth"] .authShell,
+body[data-beamish-surface="backend-hub"] .wrap{scroll-margin-top:40px}
+body[data-beamish-surface="auth"] .primary,
+body[data-beamish-surface="backend-hub"] .sign-in{box-shadow:0 9px 23px rgba(15,34,242,.14)}
+body[data-beamish-surface="auth"] .roleTile,
+body[data-beamish-surface="backend-hub"] .role{transition:border-color .2s,transform .2s,box-shadow .2s}
+body[data-beamish-surface="auth"] .roleTile:active,
+body[data-beamish-surface="backend-hub"] .role:active{transform:scale(.99)}
+body[data-beamish-surface="backend"] :is(.v17-card,.v9-panel){border-radius:16px}
+body[data-beamish-surface="backend"] :is(.v17-table-wrap,.bm-ops-table){scrollbar-width:thin}
+@media(max-width:760px){
+  body[data-beamish-surface="candidate"] .content,
+  body[data-beamish-surface="employer"] .content{background:#fff}
+  .bm-chat-trigger{right:15px!important;bottom:148px!important;width:48px!important;height:48px!important}
+  .bm-float{right:10px!important;bottom:207px!important;max-width:calc(100vw - 20px)!important;height:min(540px,calc(100dvh - 224px))!important}
+  #bs-assist-root{right:15px!important;bottom:81px!important}
+  #bs-assist-root .bs-trigger{width:49px!important;height:49px!important;min-width:49px!important;min-height:49px!important}
+  .v17-public-jobs-grid,.v17-candidate-jobs-grid{gap:13px}
+  .v17-community-layout{gap:12px}
+  body[data-beamish-surface="candidate"] .v17-profile-content-grid{gap:12px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* v14 final: profile details are part of the identity card, portfolio takes the full row. */
+.v17-profile-intro{max-width:640px;margin:18px 0 16px;color:#59667b;font-size:13px;line-height:1.75}
+.v17-profile-signals{display:flex;flex-wrap:wrap;gap:10px;margin-top:11px;color:#50627b;font-size:11px;font-weight:750}
+.v17-profile-signals span:first-child{color:#0d9a64}
+.v17-profile-shell .v17-profile-content-grid{grid-template-columns:minmax(0,1fr)}
+.v17-profile-shell .v17-profile-content-grid .v17-gallery img{height:155px}
+body[data-beamish-surface="public"] .v17-public-jobs-shell{margin:32px auto 65px}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 640" role="img" aria-label="REAL TALK graphic">
+ <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb339"/><stop offset="1" stop-color="#f9dd8c"/></linearGradient><pattern id="dots" width="23" height="23" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="white" opacity=".15"/></pattern></defs>
+ <rect width="720" height="640" rx="4" fill="url(#g)"/><rect width="720" height="640" fill="url(#dots)"/>
+ <circle cx="620" cy="125" r="190" fill="#0f22f2" opacity=".96"/><circle cx="670" cy="500" r="186" fill="white" opacity=".11"/>
+ <path d="M-40 510 L230 310 L395 645 L-40 645 Z" fill="white" opacity=".15"/><path d="M600 0 L720 0 L720 440 L345 190Z" fill="white" opacity=".12"/>
+ <g transform="rotate(-11 560 460)"><rect x="452" y="362" width="230" height="215" rx="32" fill="#0f22f2"/><path d="M484 474 H649" stroke="#ffb339" stroke-width="14" stroke-linecap="round"/><path d="M564 390 V555" stroke="#ffb339" stroke-width="14" stroke-linecap="round"/></g>
+ <rect x="35" y="38" width="200" height="36" rx="18" fill="white" opacity=".16"/><text x="53" y="62" font-family="Arial,sans-serif" font-size="16" font-weight="800" letter-spacing="2" fill="white">CAREER CLUB</text>
+ <text x="44" y="280" font-family="Arial,sans-serif" font-size="78" font-weight="900" letter-spacing="-4" fill="white">REAL</text>
+ <text x="44" y="372" font-family="Arial,sans-serif" font-size="78" font-weight="900" letter-spacing="-4" fill="white">TALK</text>
+ <text x="44" y="560" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="3" fill="white" opacity=".8">REAL PEOPLE. BRIGHTER FUTURES.</text>
+ </svg>

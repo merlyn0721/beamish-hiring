@@ -1,0 +1,115 @@
+/* Beamish v22. Restore the complete, reference-led landing page below the full-screen hero. */
+:root{--bm-ink:#0b1735;--bm-royal:#0f22f2;--bm-yellow:#e5df00}
+body[data-beamish-surface="public"] .home-wrap{width:100%;max-width:none!important;overflow:visible!important}
+body[data-beamish-surface="public"] .home-wrap .hm-section{max-width:none!important}
+body[data-beamish-surface="public"] .home-wrap .hm-hero{width:100vw!important;max-width:none!important;position:relative!important;left:0!important;transform:none!important;margin-left:0!important;min-height:calc(100svh - 70px)!important;height:calc(100svh - 70px)!important;overflow:hidden!important;border-radius:0!important}
+body[data-beamish-surface="public"] .home-wrap .hm-vibe{display:grid!important;grid-template-columns:190px minmax(0,1fr) 132px!important;max-width:1400px!important;width:calc(100% - 40px)!important;margin:28px auto 0!important;gap:15px!important;border-radius:22px!important;box-shadow:0 18px 45px #0e2a5410;position:relative!important}
+body[data-beamish-surface="public"] .home-wrap .hm-find{display:flex!important;max-width:940px!important;margin:25px auto 18px!important;padding:12px!important;scroll-margin-top:92px}
+body[data-beamish-surface="public"] .home-wrap .hm-find form{max-width:none;box-shadow:0 18px 45px #0e2a5413;border-radius:19px!important}
+body[data-beamish-surface="public"] .home-wrap .hm-section{display:block!important;scroll-margin-top:90px}
+body[data-beamish-surface="public"] .home-wrap .hm-dual{display:grid!important}
+body[data-beamish-surface="public"] .home-wrap .hm-jobsarea{display:grid!important}
+body[data-beamish-surface="public"] .home-wrap .hm-companygrid{display:grid!important}
+body[data-beamish-surface="public"] .home-wrap .hm-posts{display:grid!important}
+body[data-beamish-surface="public"] .home-wrap .v17-public-teaser,
+body[data-beamish-surface="public"] .home-wrap .v15-nextstep,
+body[data-beamish-surface="public"] .home-wrap .v21-home-extra-trigger{display:none!important}
+body[data-beamish-surface="public"] .home-wrap [hidden]{display:none!important}
+/* Ensure lower-page content stays accessible even if old wrappers are still present in markup. */
+body[data-beamish-surface="public"] .home-wrap .v17-home-more{display:contents!important}
+body[data-beamish-surface="public"] .home-wrap .v17-home-more[hidden]{display:contents!important}
+/* Matcher is a full-width, native scroll section, never a narrow fixed or left-stacked dialog. */
+body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher:not([hidden]){position:relative!important;inset:auto!important;z-index:1!important;width:min(1150px,calc(100% - 42px))!important;max-width:1150px!important;height:auto!important;max-height:none!important;overflow:visible!important;overscroll-behavior:auto!important;transform:none!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;margin:30px auto!important;background:#f5f7ff!important;padding:20px!important;box-shadow:0 20px 60px #1b27521d!important;border:1px solid #e5eaf7!important;border-radius:28px!important;scroll-margin-top:93px}
+body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher .hm-hero-quiz-top{border-radius:20px 20px 0 0!important;display:flex!important;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start}
+body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher .hm-hero-quiz-top h2{font-size:clamp(27px,3.5vw,44px);line-height:1.04;margin:7px 0}
+body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher #heroQuickBody{border-radius:0 0 20px 20px!important;min-height:300px}
+body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher .bsx-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+body[data-beamish-surface="public"].v16-quiz-active{overflow:auto!important}
+/* More faithful editorial homepage layout. */
+body[data-beamish-surface="public"] .hm-hero .hm-left h1{max-width:780px!important}
+body[data-beamish-surface="public"] .hm-vibe-cards .hm-vibe-card{cursor:pointer;border-radius:13px;transition:transform .16s,box-shadow .16s}
+body[data-beamish-surface="public"] .hm-vibe-cards .hm-vibe-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px #172e721a}
+body[data-beamish-surface="public"] .hm-section .hm-title{align-items:end;gap:18px}
+body[data-beamish-surface="public"] .hm-jobsarea{grid-template-columns:minmax(0,1fr) 260px!important;gap:23px!important}
+body[data-beamish-surface="public"] .hm-jobgrid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+body[data-beamish-surface="public"] .hm-job{min-width:0!important;transition:transform .18s,box-shadow .18s}
+body[data-beamish-surface="public"] .hm-job:hover{transform:translateY(-4px);box-shadow:0 22px 44px #13204b18}
+body[data-beamish-surface="public"] .hm-job .salary{margin-top:auto}
+body[data-beamish-surface="public"] .hm-company{transition:transform .18s,box-shadow .18s}
+body[data-beamish-surface="public"] .hm-company:hover{transform:translateY(-3px);box-shadow:0 20px 35px #1b27521b}
+body[data-beamish-surface="public"] .hm-dual{margin:0 auto!important}
+body[data-beamish-surface="public"] .hm-posts{grid-template-columns:repeat(3,minmax(0,1fr)) 270px!important;gap:15px!important}
+body[data-beamish-surface="public"] .hm-story{overflow:hidden;border-radius:17px!important;border:1px solid #e5e9f2!important;transition:transform .18s,box-shadow .18s}
+body[data-beamish-surface="public"] .hm-story:hover{transform:translateY(-3px);box-shadow:0 18px 42px #0e2a5416}
+body[data-beamish-surface="public"] .hm-commCTA{min-height:300px!important}
+/* Strongly consistent navigation and footer. */
+body[data-beamish-surface="public"] .site-header{width:100%!important;max-width:1500px!important;margin:auto!important}
+body[data-beamish-surface="public"] .site-header .header-right{display:flex!important;margin-left:auto!important;align-items:center!important;flex-shrink:0!important}
+body[data-beamish-surface="public"] .footer-inner{align-items:flex-start!important;justify-content:space-between!important}
+body[data-beamish-surface="public"] .footer-inner>div:first-child{margin-right:auto;min-width:200px}
+body[data-beamish-surface="public"] .footer-inner .footlinks{justify-content:flex-end!important}
+/* The original public page remains public: AI help available, no private message button. */
+body[data-beamish-surface="public"] #bm-chat-root{display:none!important}
+@media(max-width:1120px){
+ body[data-beamish-surface="public"] .home-wrap .hm-vibe{grid-template-columns:1fr!important}
+ body[data-beamish-surface="public"] .hm-vibe-cards{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ body[data-beamish-surface="public"] .hm-jobgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body[data-beamish-surface="public"] .hm-jobsarea{grid-template-columns:minmax(0,1fr)!important}
+ body[data-beamish-surface="public"] .hm-posts{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+ body[data-beamish-surface="public"] .home-wrap .hm-hero{height:auto!important;min-height:calc(100svh - 63px)!important}
+ body[data-beamish-surface="public"] .home-wrap .hm-vibe{width:calc(100% - 24px)!important;margin-top:16px!important;padding:18px!important}
+ body[data-beamish-surface="public"] .hm-vibe-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body[data-beamish-surface="public"] .home-wrap .hm-find{padding:8px 14px!important}
+ body[data-beamish-surface="public"] .home-wrap .hm-find form{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:5px!important}
+ body[data-beamish-surface="public"] .home-wrap .hm-find input{grid-column:1/-1;width:100%}
+ body[data-beamish-surface="public"] .home-wrap .hm-find select{min-width:0!important;max-width:none!important}
+ body[data-beamish-surface="public"] .hm-jobgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body[data-beamish-surface="public"] .hm-posts{grid-template-columns:1fr!important}
+ body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher:not([hidden]){width:calc(100% - 20px)!important;margin:10px auto!important;padding:8px!important;border-radius:19px!important}
+ body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher .bsx-grid{grid-template-columns:1fr!important}
+ body[data-beamish-surface="public"] .home-wrap #heroQuickMatcher .hm-hero-quiz-top{padding:20px!important}
+ body[data-beamish-surface="public"] .footer-inner{display:block!important;padding-inline:20px!important}
+ body[data-beamish-surface="public"] .footer-inner .footlinks{justify-content:flex-start!important;margin-top:20px}
+}
+@media(max-width:430px){body[data-beamish-surface="public"] .hm-jobgrid{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){body[data-beamish-surface="public"] .hm-job,body[data-beamish-surface="public"] .hm-story,body[data-beamish-surface="public"] .hm-company{transition:none}}
+/* Final regression fixes: legacy grid min-content was offsetting the hero and widening the page.
+   Hero graphics are baked into v16-hero-person.jpg, so avoid duplicating the label overlays. */
+body[data-beamish-surface="public"] .home-wrap{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important}
+body[data-beamish-surface="public"] .home-wrap>.hm-hero{margin-left:calc(50% - 50vw)!important;margin-right:0!important}
+body[data-beamish-surface="public"] .hm-hero .hm-doodle,
+body[data-beamish-surface="public"] .hm-hero .hm-sticky,
+body[data-beamish-surface="public"] .hm-hero .hm-pola{display:none!important}
+body[data-beamish-surface="public"] .hm-vibe{box-sizing:border-box;max-width:calc(100% - 36px)!important}
+body[data-beamish-surface="public"] .hm-section{width:100%!important;box-sizing:border-box}
+body[data-beamish-surface="public"] .hm-hero .hm-right .v21-hero-image{object-position:50% 35%!important}
+/* Reference-style young talent / employer editorial banners */
+body[data-beamish-surface="public"] .hm-dual>div{min-height:330px;padding:42px!important}
+body[data-beamish-surface="public"] .hm-dual>div>h2,
+body[data-beamish-surface="public"] .hm-dual>div>p,
+body[data-beamish-surface="public"] .hm-dual>div>.tagline,
+body[data-beamish-surface="public"] .hm-dual>div>a{position:relative;z-index:2}
+body[data-beamish-surface="public"] .hm-dual>div>p{max-width:270px}
+body[data-beamish-surface="public"] .hm-dual .talent:after{content:'';position:absolute;right:0;bottom:0;width:37%;height:95%;background:url('../assets/v21-job-person-2.jpg') center 28% / cover no-repeat;mask-image:linear-gradient(90deg,transparent,black 30%);pointer-events:none}
+body[data-beamish-surface="public"] .hm-dual .employ:after{content:'';position:absolute;right:0;bottom:0;width:47%;height:100%;background:url('../assets/v17-community-people.jpg') center / cover no-repeat;mask-image:linear-gradient(90deg,transparent,black 35%);pointer-events:none;opacity:.92}
+/* Original reference footer: navy five-column, right-aligned actions preserved in top nav. */
+body[data-beamish-surface="public"] .footer{background:#071631!important;color:#fff!important;padding:52px max(24px,calc((100% - 1280px)/2)) 24px!important;margin-top:70px}
+body[data-beamish-surface="public"] .bm22-footer-inner{display:grid;grid-template-columns:2.2fr repeat(4,1fr);gap:30px}
+body[data-beamish-surface="public"] .bm22-footer-inner>div{min-width:0}
+body[data-beamish-surface="public"] .bm22-footer-inner img{width:150px;height:auto;max-width:100%;display:block;object-fit:contain;filter:brightness(0) invert(1)}
+body[data-beamish-surface="public"] .bm22-footer-inner b{display:block;font-size:12px;margin:5px 0 16px;color:#fff}
+body[data-beamish-surface="public"] .bm22-footer-inner p,
+body[data-beamish-surface="public"] .bm22-footer-inner small{font-size:11px;color:#b5c3de;line-height:1.6}
+body[data-beamish-surface="public"] .bm22-footer-inner a{display:block;text-decoration:none;color:#bdcae5;font-size:11px;line-height:2.2}
+body[data-beamish-surface="public"] .bm22-footer-inner a:hover{color:#fff;text-decoration:underline}
+body[data-beamish-surface="public"] .bm22-socials{display:flex;gap:9px}
+body[data-beamish-surface="public"] .bm22-socials span{border-radius:8px;background:#21355b;color:white;display:grid;place-items:center;width:27px;height:27px;font-size:12px;font-weight:900}
+body[data-beamish-surface="public"] .bm22-footer-bottom{margin-top:33px;border-top:1px solid #294267;padding-top:18px;color:#9fb1cd;font-size:11px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+body[data-beamish-surface="public"] .bm22-footer-bottom a{color:#b5c6e3;text-decoration:none;font-size:11px;margin-left:20px}
+@media(max-width:950px){body[data-beamish-surface="public"] .bm22-footer-inner{grid-template-columns:repeat(3,1fr)}body[data-beamish-surface="public"] .bm22-footer-brand{grid-column:1/-1}}
+@media(max-width:620px){body[data-beamish-surface="public"] .bm22-footer-inner{grid-template-columns:repeat(2,1fr)}body[data-beamish-surface="public"] .bm22-footer-bottom{align-items:flex-start;flex-direction:column}body[data-beamish-surface="public"] .bm22-footer-bottom a{margin:0 20px 0 0}body[data-beamish-surface="public"] .hm-dual>div{min-height:300px;padding:27px!important}body[data-beamish-surface="public"] .hm-dual>div:after{opacity:.45}}
+body[data-beamish-surface="public"] .bm22-footer-logo{color:white;font-size:32px;font-weight:1000;letter-spacing:-.08em;line-height:1;margin-bottom:12px}
+body[data-beamish-surface="public"] .bm22-footer-logo span{color:white}
+body[data-beamish-surface="public"] .bm22-footer-logo i{font-size:12px;font-style:normal;color:#e5df00;vertical-align:top;margin-left:4px}

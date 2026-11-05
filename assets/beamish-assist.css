@@ -1,0 +1,36 @@
+/* Beamish Assist — scoped, shared support UI */
+#bs-assist-root {--bs-blue:#0F22F2;--bs-yellow:#E5DF00;--bs-ink:#10111a;--bs-muted:#707482;--bs-line:#e8eaf0;font-family:Inter,Arial,sans-serif!important;position:fixed;right:22px;bottom:22px;z-index:2147480000;color:var(--bs-ink);font-size:13px;line-height:1.45}
+#bs-assist-root *{box-sizing:border-box}
+#bs-assist-root button,#bs-assist-root input,#bs-assist-root textarea,#bs-assist-root select{font-family:inherit}
+#bs-assist-root button{cursor:pointer}
+#bs-assist-root .bs-trigger{border:0;display:flex;align-items:center;gap:10px;padding:12px 17px 12px 12px;background:var(--bs-blue);color:#fff;border-radius:100px;box-shadow:0 13px 33px rgba(15,34,242,.3);font-size:12px;font-weight:900;letter-spacing:0}
+#bs-assist-root .bs-trigger svg{width:24px;height:24px}
+#bs-assist-root .bs-online{width:8px;height:8px;background:var(--bs-yellow);border-radius:50%;border:1px solid #fff}
+#bs-assist-root .bs-panel{width:388px;max-width:calc(100vw - 24px);height:min(580px,calc(100dvh - 102px));background:#fff;border:1px solid #e2e4ef;border-radius:22px;box-shadow:0 24px 75px rgba(18,22,45,.24);overflow:hidden;display:none;flex-direction:column;margin-bottom:11px}
+#bs-assist-root .bs-panel.bs-open{display:flex}
+#bs-assist-root .bs-header{background:var(--bs-blue);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;flex:none}
+#bs-assist-root .bs-logo{width:41px;height:41px;border-radius:13px;background:white;color:var(--bs-blue);display:grid;place-items:center;font-size:19px;font-weight:950}
+#bs-assist-root .bs-header strong{display:block;font-size:15px;font-weight:950}#bs-assist-root .bs-header small{display:block;opacity:.86;font-size:10px;margin-top:2px}
+#bs-assist-root .bs-close{margin-left:auto;border:1px solid #ffffff55!important;color:white;background:#ffffff19;border-radius:10px;width:30px;height:30px;font-weight:900}
+#bs-assist-root .bs-log{overflow-y:auto;flex:1;padding:17px 15px;background:#fbfbfd;display:flex;flex-direction:column;gap:12px}
+#bs-assist-root .bs-msg{max-width:92%;padding:11px 12px;border-radius:14px;background:#f0f1f6;font-size:12px;line-height:1.55;align-self:flex-start;white-space:pre-wrap;overflow-wrap:anywhere}
+#bs-assist-root .bs-msg.bs-from-user{align-self:flex-end;background:#e8ebff;color:#1a2399}
+#bs-assist-root .bs-msg b{display:block;margin-bottom:5px}
+#bs-assist-root .bs-quick{display:flex;flex-wrap:wrap;gap:6px}
+#bs-assist-root .bs-quick button{border:1px solid #dadffe;background:#fff;color:#0f22f2;padding:7px 10px;border-radius:999px;font-size:10px;font-weight:850}
+#bs-assist-root .bs-related{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+#bs-assist-root .bs-related a,#bs-assist-root .bs-related button{font-size:11px;color:var(--bs-blue);background:white;border:1px solid #cdd3ff;border-radius:9px;padding:7px 9px;text-decoration:none;font-weight:850}
+#bs-assist-root .bs-footer{border-top:1px solid var(--bs-line);background:white;padding:10px;flex:none}
+#bs-assist-root .bs-form{display:flex;gap:7px;align-items:center}
+#bs-assist-root .bs-form input{min-width:0;flex:1;padding:11px;background:#f6f6fa;border:1px solid #e2e4ea;border-radius:11px;font-size:12px;outline-color:var(--bs-blue)}
+#bs-assist-root .bs-send{border:0;background:var(--bs-blue);color:white;font-weight:900;border-radius:11px;padding:11px 13px}
+#bs-assist-root .bs-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px}
+#bs-assist-root .bs-bottom small{font-size:9px;color:#999}
+#bs-assist-root .bs-agent{font-size:10px;font-weight:850;border:0;background:transparent;color:var(--bs-blue);padding:4px}
+#bs-assist-root .bs-handoff{background:#fff9da;border:1px solid #eee6a0;border-radius:13px;padding:12px;margin-top:2px;font-size:11px;color:#444}
+#bs-assist-root .bs-handoff b{display:block;color:#333;margin-bottom:4px}
+#bs-assist-root .bs-handoff label{display:block;margin-top:9px;font-size:10px;font-weight:850}
+#bs-assist-root .bs-handoff input,#bs-assist-root .bs-handoff textarea{width:100%;border:1px solid #d6d6cf;border-radius:9px;background:#fff;padding:9px;margin-top:4px;font-size:11px}
+#bs-assist-root .bs-handoff button{padding:9px 12px;background:var(--bs-blue);color:#fff;border:0;border-radius:9px;font-weight:850;margin-top:10px}
+#bs-assist-root .bs-note{display:block;color:#6b6170;font-size:10px;margin-top:7px}
+@media(max-width:600px){#bs-assist-root{bottom:83px;right:14px}#bs-assist-root .bs-panel{height:min(570px,calc(100dvh - 180px));width:min(380px,calc(100vw - 28px))}#bs-assist-root .bs-trigger{margin-left:auto}}
