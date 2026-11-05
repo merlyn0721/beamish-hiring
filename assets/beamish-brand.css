@@ -193,3 +193,12 @@ body.ref-is-home.home-revealed .ref-hero:after{content:'';position:absolute;left
 body.ref-is-home .ref-hero-copy{position:relative;z-index:1}
 @media(max-width:760px){:root{--beamish-section-gap:76px;--beamish-workspace-gap:32px}.rj-landing-banner:after{height:65px}.rj-restored-layout .rj-banner{padding-top:40px;padding-bottom:40px}.rj-restored-layout .rj-layout{padding-top:25px;padding-bottom:76px}#view>.grid,#main>.grid{gap:20px}}
 .rj-landing-banner>img{mask-image:linear-gradient(to bottom,#000 0%,#000 72%,rgba(0,0,0,.6) 88%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 72%,rgba(0,0,0,.6) 88%,transparent 100%)}
+/* Compact transparent footer, short dividers, and blue category headings. */
+body .footer.ref-footer,body .footer{background:transparent!important;color:#000!important;position:relative;border:0!important;padding-top:30px!important;padding-bottom:18px!important}
+body .footer.ref-footer:before{content:'';position:absolute;top:0;left:25%;width:50%;height:1px;background:#d9d9d9;pointer-events:none}
+.ref-footer-columns{gap:24px}.ref-footer-columns>div>b{color:#0f22f2!important;font-size:12px;margin:0 0 7px}
+.ref-footer-columns>div>a:not(:first-child){font-size:11px;line-height:1.6}.ref-footer-columns>div>p{font-size:11px;margin-top:10px;line-height:1.4}
+.ref-footer .beamish-brand-logo{width:135px}.ref-social-links{gap:17px;font-size:21px}
+.ref-footer-bottom{position:relative;margin-top:20px;padding-top:14px;border:0!important;font-size:10px;gap:12px}
+.ref-footer-bottom:before{content:'';position:absolute;top:0;left:25%;width:50%;height:1px;background:#dedede;pointer-events:none}
+@media(max-width:760px){body .footer.ref-footer{padding-top:25px!important;padding-bottom:16px!important}.ref-footer-columns{gap:20px 22px}.ref-footer-columns>div>b{font-size:12px}.ref-footer-columns>div>a:not(:first-child){font-size:11px;line-height:1.6}.ref-footer-columns>div>p{margin-top:8px}.ref-footer-bottom{margin-top:20px;padding-top:13px;gap:12px}.ref-footer-bottom>div{gap:20px}}
