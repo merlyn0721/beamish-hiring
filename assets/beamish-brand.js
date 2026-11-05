@@ -4,6 +4,8 @@ const src=new URL('beamish-brand-logo.png',document.currentScript.src).href;
 let frame=0,heroPixels=null;
 const heroImage=new Image();heroImage.src=new URL('beamish-reference-hero.png',src).href;
 heroImage.onload=()=>{const canvas=document.createElement('canvas');canvas.width=heroImage.naturalWidth;canvas.height=heroImage.naturalHeight;const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(heroImage,0,0);heroPixels={context,width:canvas.width,height:canvas.height};scheduleContrast()};
+const bannerPixels=new Map();
+function pixelsFor(hero){if(hero.classList.contains('ref-hero'))return heroPixels;const match=getComputedStyle(hero).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);if(!match)return null;const url=match[1];if(!bannerPixels.has(url)){bannerPixels.set(url,null);const img=new Image();img.onload=()=>{const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(img,0,0);bannerPixels.set(url,{context,width:canvas.width,height:canvas.height});scheduleContrast()};img.src=url}return bannerPixels.get(url)}
 function luminance(rgb){return .2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2]}
 function surfaceBrightness(element){
  const box=element.getBoundingClientRect(),x=box.left+box.width/2,y=box.top+box.height/2;
@@ -11,14 +13,15 @@ function surfaceBrightness(element){
  if(header){
   if(header.classList.contains('is-scrolled'))return backgroundBrightness(header);
   if(header.classList.contains('menu-open')&&element.closest('.ref-nav'))return backgroundBrightness(element);
-  const hero=document.querySelector('.ref-hero'),r=hero?.getBoundingClientRect();
-  if(r&&y>=r.top&&y<r.bottom&&heroPixels){
-   const style=getComputedStyle(hero),iw=heroPixels.width,ih=heroPixels.height;
-   const scale=style.backgroundSize==='cover'?Math.max(r.width/iw,r.height/ih):r.width/iw;
+  const hero=document.querySelector('.ref-hero,.ce-hero'),r=hero?.getBoundingClientRect(),pixels=hero?pixelsFor(hero):null;
+  if(r&&y>=r.top&&y<r.bottom&&pixels){
+   const style=getComputedStyle(hero),iw=pixels.width,ih=pixels.height;
+   const dimensions=style.backgroundSize.split(' ');const scale=style.backgroundSize==='cover'?Math.max(r.width/iw,r.height/ih):dimensions[0]==='auto'&&dimensions[1]?.endsWith('px')?parseFloat(dimensions[1])/ih:r.width/iw;
    const position=style.backgroundPosition.split(' ').map(v=>parseFloat(v)/100),px=Number.isFinite(position[0])?position[0]:.5,py=Number.isFinite(position[1])?position[1]:.5;
    const offsetX=(r.width-iw*scale)*px,offsetY=(r.height-ih*scale)*py;
+   if(y-r.top<offsetY||y-r.top>offsetY+ih*scale)return backgroundBrightness(hero);
    let total=0;
-   for(const dx of [-.3,0,.3]){const ix=Math.max(0,Math.min(iw-1,Math.floor((x+box.width*dx-r.left-offsetX)/scale))),iy=Math.max(0,Math.min(ih-1,Math.floor((y-r.top-offsetY)/scale)));total+=luminance(heroPixels.context.getImageData(ix,iy,1,1).data)}
+   for(const dx of [-.3,0,.3]){const ix=Math.max(0,Math.min(iw-1,Math.floor((x+box.width*dx-r.left-offsetX)/scale))),iy=Math.max(0,Math.min(ih-1,Math.floor((y-r.top-offsetY)/scale)));total+=luminance(pixels.context.getImageData(ix,iy,1,1).data)}
    return total/3;
   }
   const beneath=document.elementsFromPoint(x,y).find(node=>node!==document.documentElement&&node!==document.body&&!header.contains(node));

@@ -202,3 +202,15 @@ body .footer.ref-footer:before{content:'';position:absolute;top:0;left:25%;width
 .ref-footer-bottom{position:relative;margin-top:20px;padding-top:14px;border:0!important;font-size:10px;gap:12px}
 .ref-footer-bottom:before{content:'';position:absolute;top:0;left:25%;width:50%;height:1px;background:#dedede;pointer-events:none}
 @media(max-width:760px){body .footer.ref-footer{padding-top:25px!important;padding-bottom:16px!important}.ref-footer-columns{gap:20px 22px}.ref-footer-columns>div>b{font-size:12px}.ref-footer-columns>div>a:not(:first-child){font-size:11px;line-height:1.6}.ref-footer-columns>div>p{margin-top:8px}.ref-footer-bottom{margin-top:20px;padding-top:13px;gap:12px}.ref-footer-bottom>div{gap:20px}}
+/* Full-viewport account backgrounds without an inset white frame. */
+body[data-auth-mode]{min-height:100svh;background:radial-gradient(circle at 5% 62%,#e8eefc 0 14%,transparent 14.1%),radial-gradient(circle at 98% 65%,#eaf0fd 0 18%,transparent 18.1%),linear-gradient(140deg,#f0f4ff 0%,#fff 45%,#f4f7ff 100%)!important;background-attachment:fixed!important}
+body[data-auth-mode] .authTop{position:absolute;inset:0 0 auto;max-width:none;width:100%;padding:20px 5%;margin:0;background:transparent}
+body[data-auth-mode] .authShell{max-width:none;width:100%;min-height:100svh;margin:0;padding:0;display:flex;flex-direction:column}
+body[data-auth-mode] .authScene,body[data-auth-mode] .authScene.step-select,body[data-auth-mode] .authScene.step-form{width:100%;min-height:calc(100svh - 48px);margin:0;padding:110px 5% 32px;border:0;border-radius:0;background:transparent!important;box-shadow:none;flex:1}
+body[data-auth-mode] .authScene.step-select{display:flex;flex-direction:column;justify-content:center}
+body[data-auth-mode] .roleGrid{width:100%;max-width:1030px;margin:0 auto}
+body[data-auth-mode] .authIntro{margin-top:0}
+body[data-auth-mode] .miniBrand,body[data-auth-mode] .formImageContent>small{display:none!important}
+body[data-auth-mode] .foot{margin:0;padding:12px 5%;background:transparent;font-size:10px;line-height:20px}
+body[data-auth-mode] .authScene.step-form #formsAnchor{width:100%}
+@media(max-width:740px){body[data-auth-mode] .authTop{padding:17px 5%}body[data-auth-mode] .authBrand.beamish-brand-logo{width:130px}body[data-auth-mode] .authScene,body[data-auth-mode] .authScene.step-select,body[data-auth-mode] .authScene.step-form{padding:100px 5% 28px;min-height:calc(100svh - 65px)}body[data-auth-mode] .authIntro{padding:0}body[data-auth-mode] .authIntro h1{font-size:34px;line-height:1.1}body[data-auth-mode] .authNav>span{display:none}body[data-auth-mode] .foot{padding:10px 5%;font-size:9px}body[data-auth-mode] .roleTile .tileImage{height:130px}}
