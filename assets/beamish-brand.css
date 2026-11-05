@@ -115,3 +115,10 @@ body .footer.ref-footer,body .footer{background:#eaeaea!important;color:#000!imp
 .ref-footer-columns>div>b,.ref-footer-columns>div>a,.ref-footer-columns>div>p,.ref-footer-bottom,.ref-footer-bottom a,.ref-social-links a{color:#000!important}
 .ref-footer-columns a:hover,.ref-footer-bottom a:hover,.ref-social-links a:hover{color:#0f22f2!important}
 .ref-footer-bottom{border-color:#c8c8c8!important}
+/* Let the Jobs hero extend behind the transparent navigation; raise its portrait. */
+body.ref-is-jobs #publicContent{padding-top:0!important}
+.rj-restored-layout .rj-landing-banner{padding-top:70px}
+.rj-restored-layout .rj-landing-banner>img{transform:translateY(-28px)}
+body .site-header.ref-header:not(.is-scrolled){background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body .site-header.ref-header:not(.is-scrolled):before{opacity:0!important}
+@media(max-width:760px){.rj-restored-layout .rj-landing-banner{padding-top:95px}.rj-restored-layout .rj-landing-banner>img{transform:none}}
