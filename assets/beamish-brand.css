@@ -26,3 +26,9 @@ body.ref-is-home .ref-header:not(.is-scrolled) .ref-search-icon,body.ref-is-home
 body.ref-is-home .ref-hero{height:auto;min-height:0;max-height:none;aspect-ratio:2022/778;background-size:100% 100%;background-position:center}
 @media(max-width:760px){body.ref-is-home .ref-hero{aspect-ratio:auto;height:auto;min-height:0;background-color:#000;background-size:100% auto;background-position:center top;background-repeat:no-repeat}body.ref-is-home .ref-hero:before{background:none!important}body.ref-is-home .ref-hero-copy{padding-top:calc(100vw * 778 / 2022 + 25px);padding-bottom:32px}body.ref-is-home .ref-header.menu-open .ref-nav{background:#eaeaea!important}body.ref-is-home .ref-header.menu-open .ref-nav a{color:#000!important;text-shadow:none!important}}
 body.ref-is-home .ref-header .ref-button.white{border-color:#0f22f2!important;color:#0f22f2!important}body.ref-is-home .ref-header .ref-search-icon,body.ref-is-home .ref-header .ref-menu{color:#0f22f2!important}
+/* Automatically retain the yellow mark while switching blue letters to white on dark surfaces. */
+img.beamish-brand-logo.is-white-logo{filter:url('#beamish-white-logo')!important}.ref-footer .beamish-brand-logo{background:transparent!important;padding:0!important;box-sizing:border-box}
+body .ref-header .ref-button.white{background:transparent!important;color:#0f22f2!important;border-color:#0f22f2!important}
+body .ref-header .ref-button.white.on-dark-surface,body.ref-is-home .ref-header .ref-button.white.on-dark-surface{color:#fff!important;border-color:#fff!important;text-shadow:0 1px 3px #0005}
+body .ref-header .ref-search-icon.on-dark-surface,body .ref-header .ref-menu.on-dark-surface,body.ref-is-home .ref-header .ref-search-icon.on-dark-surface,body.ref-is-home .ref-header .ref-menu.on-dark-surface{color:#fff!important}
+body.ref-is-home .ref-header .ref-search-icon:not(.on-dark-surface),body.ref-is-home .ref-header .ref-menu:not(.on-dark-surface){color:#0f22f2!important}

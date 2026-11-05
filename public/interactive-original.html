@@ -63,5 +63,5 @@
     function openJob(title){showModal('apply',title)}window.openJob=openJob;document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>showModal(b.dataset.open));function closeModal(){modal.classList.add('hidden');document.body.style.overflow=''}document.querySelector('#close').onclick=closeModal;modal.onclick=e=>{if(e.target===modal)closeModal()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});form.addEventListener('submit',e=>{e.preventDefault();success.textContent='Done! Your submission has been captured in this prototype ✓';success.classList.remove('hidden');form.reset()});
     renderQuestion();renderJobs();
   </script>
-<link rel="stylesheet" href="../assets/beamish-brand.css?v=transparent-home"><script src="../assets/beamish-brand.js?v=transparent-home"></script></body>
+<link rel="stylesheet" href="../assets/beamish-brand.css?v=adaptive-contrast"><script src="../assets/beamish-brand.js?v=adaptive-contrast"></script></body>
 </html>
