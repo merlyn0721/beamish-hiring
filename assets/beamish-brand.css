@@ -96,3 +96,22 @@ body .site-header.ref-header.is-scrolled:before{content:'';position:absolute;ins
 @media(prefers-reduced-transparency:reduce){body .site-header.ref-header.is-scrolled:before{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none}}
 /* White Log In treatment over the homepage banner; standard blue after scrolling. */
 body.ref-is-home .site-header.ref-header:not(.is-scrolled) .ref-header-actions a.ref-button.white[href*="login.html"]{color:#fff!important;border-color:#fff!important;background:transparent!important;text-shadow:0 1px 3px #0004}
+/* A longer, gradual glass fade and calmer spacing between homepage sections. */
+body .site-header.ref-header:before,body .site-header.ref-header.is-scrolled:before{content:'';position:absolute;inset:-24px 0 -54px;z-index:-1;pointer-events:none;background:rgba(255,255,255,.46);backdrop-filter:blur(44px) saturate(108%);-webkit-backdrop-filter:blur(44px) saturate(108%);mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.98) 22%,rgba(0,0,0,.88) 43%,rgba(0,0,0,.62) 63%,rgba(0,0,0,.27) 82%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.98) 22%,rgba(0,0,0,.88) 43%,rgba(0,0,0,.62) 63%,rgba(0,0,0,.27) 82%,transparent 100%);opacity:0;transition:opacity .4s ease}
+body .site-header.ref-header.is-scrolled:before{opacity:1}
+.ref-home .ref-vibe{margin-top:85px;margin-bottom:75px;padding-top:28px;padding-bottom:32px}
+.ref-home .ref-search-area{margin-top:0;margin-bottom:115px;padding-top:15px;padding-bottom:20px}
+.ref-home .ref-trending{margin-top:0;margin-bottom:120px}
+.ref-home .ref-companies{margin-top:0;margin-bottom:120px}
+.ref-home .ref-dual{margin-top:0;margin-bottom:120px}
+.ref-home .ref-topics{margin-top:0;margin-bottom:120px}
+.ref-home .ref-section-heading{margin-bottom:28px}
+.rj-restored-layout .rj-banner{padding-top:50px;padding-bottom:50px}.rj-restored-layout .rj-layout{padding-top:24px;padding-bottom:80px}.rj-restored-layout .rj-results>.rj-designed-ad{margin-top:65px}
+@media(max-width:760px){.ref-home .ref-vibe{margin-top:50px;margin-bottom:50px;padding-top:20px;padding-bottom:25px}.ref-home .ref-search-area{margin-bottom:75px;padding-top:10px;padding-bottom:15px}.ref-home .ref-trending,.ref-home .ref-companies,.ref-home .ref-dual,.ref-home .ref-topics{margin-top:0;margin-bottom:75px}.ref-home .ref-section-heading{margin-bottom:22px}.rj-restored-layout .rj-banner{padding-top:35px;padding-bottom:35px}.rj-restored-layout .rj-layout{padding-bottom:55px}.rj-restored-layout .rj-results>.rj-designed-ad{margin-top:45px}}
+@media(prefers-reduced-motion:reduce){body .site-header.ref-header:before{transition:none}}
+@media(prefers-reduced-transparency:reduce){body .site-header.ref-header:before,body .site-header.ref-header.is-scrolled:before{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none}}
+/* Platinum-gray brand footer with dark text and the original blue/yellow wordmark. */
+body .footer.ref-footer,body .footer{background:#eaeaea!important;color:#000!important}
+.ref-footer-columns>div>b,.ref-footer-columns>div>a,.ref-footer-columns>div>p,.ref-footer-bottom,.ref-footer-bottom a,.ref-social-links a{color:#000!important}
+.ref-footer-columns a:hover,.ref-footer-bottom a:hover,.ref-social-links a:hover{color:#0f22f2!important}
+.ref-footer-bottom{border-color:#c8c8c8!important}
