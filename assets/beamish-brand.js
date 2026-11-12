@@ -1,6 +1,6 @@
 /* Use one supplied brand identity across shared headers, footers and portals. */
 (()=>{'use strict';
-const refresh=document.createElement('link');refresh.rel='stylesheet';refresh.href=new URL('beamish-design-refresh.css',document.currentScript.src).href;document.body.appendChild(refresh);const experienceStyle=document.createElement('link');experienceStyle.rel='stylesheet';experienceStyle.href=new URL('beamish-experience.css?v=entrance-company3',document.currentScript.src).href;document.body.appendChild(experienceStyle);const polishStyle=document.createElement('link');polishStyle.rel='stylesheet';polishStyle.href=new URL('beamish-polish.css?v=interactions4',document.currentScript.src).href;document.body.appendChild(polishStyle);
+const refresh=document.createElement('link');refresh.rel='stylesheet';refresh.href=new URL('beamish-design-refresh.css',document.currentScript.src).href;document.body.appendChild(refresh);const experienceStyle=document.createElement('link');experienceStyle.rel='stylesheet';experienceStyle.href=new URL('beamish-experience.css?v=entrance-company3',document.currentScript.src).href;document.body.appendChild(experienceStyle);const polishStyle=document.createElement('link');polishStyle.rel='stylesheet';polishStyle.href=new URL('beamish-polish.css?v=interactions4',document.currentScript.src).href;document.body.appendChild(polishStyle);const layoutStyle=document.createElement('link');layoutStyle.rel='stylesheet';layoutStyle.href=new URL('beamish-layout.css?v=full-match5',document.currentScript.src).href;document.body.appendChild(layoutStyle);
 const src=new URL('beamish-brand-logo.png',document.currentScript.src).href;
 let frame=0,heroPixels=null;
 const heroImage=new Image();heroImage.src=new URL('beamish-reference-hero.png',src).href;
@@ -50,6 +50,7 @@ function authNavigation(){
  top.insertBefore(nav,top.querySelector('.authNav'));
 }
 function apply(){
+ const publicHeader=document.querySelector('.site-header.ref-header');if(publicHeader)publicHeader.id='beamish-public-header';const authHeader=document.querySelector('.authTop');if(authHeader)authHeader.id='beamish-auth-header';const sharedFooter=document.querySelector('.ref-footer');if(sharedFooter)sharedFooter.id='beamish-footer';
  authNavigation();flipLabels();
  document.querySelectorAll('img').forEach(img=>{
   const old=img.getAttribute('src')||'';
