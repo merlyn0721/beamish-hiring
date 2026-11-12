@@ -117,7 +117,7 @@ html body[data-auth-mode=signup] .authShell>.authScene.step-select{min-height:0!
 #bs-assist-root[data-robot-style=a] .bs-trigger,#bs-assist-root[data-robot-style=a] .bs-trigger:hover{animation:bm-greeting-shake 7.5s ease-in-out infinite!important;transform-origin:50% 100%}
 #bs-assist-root[data-robot-style=a] .bs-trigger>.bs-robot{visibility:hidden!important}
 .bs-robot-wave{display:block;position:absolute;inset:0;background:url('beamish-robot-a-wave.webp') 0 center/400% 100% no-repeat;animation:bm-hand-wave 7.5s steps(1,end) infinite;pointer-events:none}
-@keyframes bm-greeting-shake{0%,14%,100%{transform:rotate(0)}2%,6%,10%{transform:rotate(-7deg)}4%,8%,12%{transform:rotate(7deg)}}
+@keyframes bm-greeting-shake{0%,17%,100%{transform:rotate(0) scale(1)}5%{transform:rotate(-3deg) scaleY(.98)}11%{transform:rotate(3deg) scaleY(.99)}15%{transform:rotate(-1deg) scale(1)}}
 @keyframes bm-hand-wave{0%{background-position:0 center}17%{background-position:33.333333% center}22%{background-position:66.666667% center}27%{background-position:100% center}32%{background-position:66.666667% center}37%{background-position:100% center}42%{background-position:66.666667% center}47%{background-position:33.333333% center}53%,100%{background-position:0 center}}
 @media(prefers-reduced-motion:reduce){#bs-assist-root[data-robot-style=a] .bs-trigger,#bs-assist-root[data-robot-style=a] .bs-trigger:hover,.bs-robot-wave{animation:none!important}}
 #bs-assist-root .bs-trigger>.bs-robot-wave{display:block!important;width:56px!important;height:65px!important;position:absolute!important;inset:0!important;clip-path:none!important;overflow:visible!important}
