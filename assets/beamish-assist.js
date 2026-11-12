@@ -5,7 +5,8 @@
   const script=document.currentScript;
   const siteRoot=new URL('../',script.src);
   const to=(p)=>new URL(p,siteRoot).href;
-  const robot=to('assets/beamish-robot.svg');
+  const robotStyle=new URLSearchParams(location.search).get('robot')==='b'?'b':'a';
+  const robot=to('assets/beamish-robot-'+robotStyle+'.webp');
   const pathname=location.pathname.toLowerCase();
   const currentArea=pathname.includes('/candidate/')?'candidate':pathname.includes('/employer/')?'employer':pathname.includes('/backend/')?'admin':pathname.includes('/auth/')?'account':'public';
   const labels={public:'Public Website',candidate:'Candidate Portal',employer:'Employer Portal',account:'Login & Sign Up',admin:'Backend Portal'};

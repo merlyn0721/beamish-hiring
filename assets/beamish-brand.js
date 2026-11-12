@@ -1,6 +1,6 @@
 /* Use one supplied brand identity across shared headers, footers and portals. */
 (()=>{'use strict';
-const refresh=document.createElement('link');refresh.rel='stylesheet';refresh.href=new URL('beamish-design-refresh.css',document.currentScript.src).href;document.head.appendChild(refresh);
+const refresh=document.createElement('link');refresh.rel='stylesheet';refresh.href=new URL('beamish-design-refresh.css',document.currentScript.src).href;document.body.appendChild(refresh);
 const src=new URL('beamish-brand-logo.png',document.currentScript.src).href;
 let frame=0,heroPixels=null;
 const heroImage=new Image();heroImage.src=new URL('beamish-reference-hero.png',src).href;
@@ -33,7 +33,24 @@ function surfaceBrightness(element){
 function backgroundBrightness(element){for(let node=element;node;node=node.parentElement){const color=getComputedStyle(node).backgroundColor,values=color.match(/[\d.]+/g)?.map(Number);if(values&&values.length>=3&&(values.length<4||values[3]>.65))return luminance(values)}return 234}
 function contrast(){frame=0;const current=(location.hash||'#home');document.querySelectorAll('.ref-nav a').forEach(link=>{if(link.getAttribute('href')===current)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');link.classList.toggle('on-dark-surface',surfaceBrightness(link)<150)});document.querySelectorAll('img.beamish-brand-logo').forEach(img=>img.classList.toggle('is-white-logo',surfaceBrightness(img)<135));const header=document.querySelector('.ref-header');if(header){const login=header.querySelector('a[href*="login.html"]');if(login)login.classList.toggle('on-dark-surface',surfaceBrightness(login)<135);const search=header.querySelector('.ref-search-icon'),menu=header.querySelector('.ref-menu'),signup=header.querySelector('.ref-button.navy');for(const el of [search,menu,signup])if(el)el.classList.toggle('on-dark-surface',surfaceBrightness(el)<135)}}
 function scheduleContrast(){if(!frame)frame=requestAnimationFrame(contrast)}
+function flipLabels(){
+ document.querySelectorAll('.ref-nav a,.auth-public-nav a').forEach(link=>{
+  if(link.dataset.flipReady)return;
+  const text=link.textContent.trim();link.dataset.flipReady='true';link.setAttribute('aria-label',text);
+  const mask=document.createElement('span');mask.className='bn-flip';mask.setAttribute('aria-hidden','true');
+  for(let row=0;row<2;row++){const line=document.createElement('span');line.className='bn-flip-row';
+   Array.from(text).forEach((char,i)=>{const letter=document.createElement('span');letter.textContent=char===' '?'\u00a0':char;letter.style.setProperty('--letter',i);line.appendChild(letter)});mask.appendChild(line)}
+  link.replaceChildren(mask);
+ });
+}
+function authNavigation(){
+ const top=document.querySelector('.authTop');if(!top||top.querySelector('.auth-public-nav'))return;
+ const nav=document.createElement('nav');nav.className='auth-public-nav';nav.setAttribute('aria-label','Main navigation');
+ for(const [key,label] of [['jobs','Find Jobs'],['companies','Companies'],['irl','Career IRL'],['community','Community'],['employers','For Employers']]){const a=document.createElement('a');a.href=new URL('../public/index.html#'+key,src).href;a.textContent=label;nav.appendChild(a)}
+ top.insertBefore(nav,top.querySelector('.authNav'));
+}
 function apply(){
+ authNavigation();flipLabels();
  document.querySelectorAll('img').forEach(img=>{
   const old=img.getAttribute('src')||'';
   if(!(/(?:^|\/)(?:beamish-logo|logo)\.png(?:[?#]|$)/.test(old)||img.matches('#logoSide,#logoMobile,#sideLogo,.authBrand,.mobileLogo,.logo img,.ref-logo img,.ref-footer .beamish-brand-logo')||img.classList.contains('beamish-brand-logo')))return;
