@@ -1,5 +1,6 @@
 /* Use one supplied brand identity across shared headers, footers and portals. */
 (()=>{'use strict';
+const refresh=document.createElement('link');refresh.rel='stylesheet';refresh.href=new URL('beamish-design-refresh.css',document.currentScript.src).href;document.head.appendChild(refresh);
 const src=new URL('beamish-brand-logo.png',document.currentScript.src).href;
 let frame=0,heroPixels=null;
 const heroImage=new Image();heroImage.src=new URL('beamish-reference-hero.png',src).href;
