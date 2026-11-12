@@ -12,6 +12,7 @@ const company=root.querySelector('.be-company-page');if(company){group(company,[
 const why=root.querySelector(':scope>.bf-why'),cta=root.querySelector(':scope>.bf-cta,:scope>.bs-newsletter');if(why){const wrapper=group(root,[why,cta],'bm-values-view');if(employer){const plans=employer.querySelector(':scope>.bf-plans');if(plans)wrapper.prepend(plans)}}
 measure();}
 function measure(){const footer=document.querySelector('.ref-footer');if(footer)document.documentElement.style.setProperty('--bm-footer-height',footer.getBoundingClientRect().height+'px')}
-function init(){const render=window.render;window.render=function(){render.apply(this,arguments);layout()};window.addEventListener('hashchange',()=>queueMicrotask(layout));window.addEventListener('resize',measure,{passive:true});if('ResizeObserver'in window){const footer=document.querySelector('.ref-footer');if(footer)new ResizeObserver(measure).observe(footer)}window.render();}
+function glass(){document.body.classList.toggle('bm-nav-scrolled',window.scrollY>16)}
+function init(){window.addEventListener('scroll',glass,{passive:true});glass();const render=window.render;window.render=function(){render.apply(this,arguments);layout()};window.addEventListener('hashchange',()=>queueMicrotask(layout));window.addEventListener('resize',measure,{passive:true});if('ResizeObserver'in window){const footer=document.querySelector('.ref-footer');if(footer)new ResizeObserver(measure).observe(footer)}window.render();}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
