@@ -6,7 +6,7 @@
   const siteRoot=new URL('../',script.src);
   const to=(p)=>new URL(p,siteRoot).href;
   const robotStyle=new URLSearchParams(location.search).get('robot')==='b'?'b':'a';
-  const robot=to('assets/beamish-robot-'+robotStyle+'.webp');
+  const robot=to('assets/beamish-robot-'+robotStyle+'.webp?v=matte-grounded3');
   const pathname=location.pathname.toLowerCase();
   const currentArea=pathname.includes('/candidate/')?'candidate':pathname.includes('/employer/')?'employer':pathname.includes('/backend/')?'admin':pathname.includes('/auth/')?'account':'public';
   const labels={public:'Public Website',candidate:'Candidate Portal',employer:'Employer Portal',account:'Login & Sign Up',admin:'Backend Portal'};
@@ -38,7 +38,7 @@
   const byArea={public:['Find jobs','Career Match','Sign up','Report a problem'],candidate:['Applications','Profile & CV','Career Match','Report a problem'],employer:['Create job','Talent shortlist','Plan & Billing','Report a problem'],account:['Sign up','Login help','Candidate Portal','Report a problem'],admin:['Admin roles','Plan management','Trending hashtags','Report a problem']};
   const root=document.createElement('div');root.id='bs-assist-root';
   root.innerHTML=`<section class="bs-panel" id="bs-panel" role="dialog" aria-label="Beamish Assist" aria-hidden="true"><div class="bs-header"><span class="bs-logo"><img src="${robot}" alt=""></span><div><strong>Beamish Assist <span style="color:#e5df00">✦</span></strong><small>Guided support · ${labels[currentArea]}</small></div><button class="bs-close" type="button" aria-label="Close chat" id="bs-close">×</button></div><div class="bs-log" id="bs-log" aria-live="polite"></div><div class="bs-footer"><form class="bs-form" id="bs-form"><input id="bs-input" placeholder="Ask about Beamish..." aria-label="Ask Beamish Support" maxlength="500" required><button class="bs-send" type="submit">Send</button></form><div class="bs-bottom"><small>Demo assistant · no live AI connected</small><button type="button" class="bs-agent" id="bs-agent">Talk to a live agent ↗</button></div></div></section><button type="button" class="bs-trigger" id="bs-trigger" aria-label="Open Beamish AI support" aria-controls="bs-panel" aria-expanded="false"><img class="bs-robot" src="${robot}" alt="Beamish robot"><span class="bs-sr-only">Ask Beamish</span></button>`;
-  document.body.appendChild(root);
+  root.dataset.robotStyle=robotStyle;document.body.appendChild(root);
   root.addEventListener('keydown',e=>{if(e.key==='Escape'&&root.querySelector('.bs-open')){e.preventDefault();close()}});
   const panel=root.querySelector('#bs-panel'), log=root.querySelector('#bs-log'), trigger=root.querySelector('#bs-trigger'), input=root.querySelector('#bs-input');
   const el=(tag,cls,txt)=>{const node=document.createElement(tag);node.className=cls;if(txt!==undefined)node.textContent=txt;return node};
