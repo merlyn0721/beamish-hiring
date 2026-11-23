@@ -4,8 +4,10 @@
   const panel = (name, content, extra = '', link = '') => `<section class="candidate-glass ${extra}"><div class="candidate-panel-heading"><h2>${name}</h2>${link}</div>${content}</section>`;
   const image = (key, className = '') => `<img class="${className}" src="${pic(key)}" alt="">`;
 
-  function jobTile(job) {
-    return `<article class="candidate-compact-job"><strong>${escape(job.role)}</strong><small>${escape(job.co)}</small><span>${escape(job.place)}</span><span>${escape(job.pay)}</span>${action('View job', `jobDetail(${job.id})`)}</article>`;
+  function jobTile(job, featured = false) {
+    const company = escape(job.co);
+    const initials = escape(job.co.split(/\s+/).slice(0, 2).map(word => word[0]).join(''));
+    return `<article class="candidate-compact-job"><div class="candidate-job-identity"><span class="candidate-company-mark" aria-hidden="true">${initials}</span><div><strong>${escape(job.role)}</strong><small>${company}</small></div></div><span>${escape(job.place)}</span><span>${escape(job.pay)}</span>${action(featured ? 'View details' : 'View job', `jobDetail(${job.id})`)}</article>`;
   }
 
   function dashboard() {
@@ -57,18 +59,18 @@
         <div class="candidate-dashboard-center">
           ${live}
           <div class="candidate-dashboard-trio">
-            ${panel('Picked for You', featured ? image(featured.img, 'candidate-feature-art') + jobTile(featured) : '<p>No jobs available.</p>', 'candidate-featured')}
+            ${panel('Picked for You', featured ? image(featured.img, 'candidate-feature-art') + jobTile(featured, true) : '<p>No jobs available.</p>', 'candidate-featured', action('View all', "goto('Jobs','Discover Jobs')"))}
             ${panel('My Applications', DATA.apps.slice(0, 3).map(app => `<article class="candidate-application"><strong>${escape(app.role)}</strong><small>${escape(app.co)}</small>${appStageHtml(app)}</article>`).join('') || '<p>No applications yet.</p>', '', action('View all', "goto('Applications','My Applications')"))}
             ${panel('Your Career Match', jobs.slice(0, 3).map(job => `<div class="candidate-match"><div><strong>${escape(job.role)}</strong><b>${job.match}%</b></div><progress value="${job.match}" max="100" aria-label="${escape(job.role)} match"></progress></div>`).join(''), '', action('View all', "goto('Career Match','My Match')"))}
           </div>
-          ${panel('Recommended Jobs for You', `<div class="candidate-recommended">${jobs.slice(0, 4).map(jobTile).join('')}</div>`, '', action('View all', "goto('Jobs','Discover Jobs')"))}
-          ${panel('Community', `<div class="candidate-community-preview">${posts.map(post => `<article>${image(post.img)}<div><strong>${escape(post.title)}</strong><small>${escape(post.name)}</small>${action('Read story', `viewPost(${post.id})`)}</div></article>`).join('')}</div>`, '', action('View all', "goto('Community','Home')"))}
+          ${panel('Recommended Jobs for You', `<div class="candidate-recommended">${jobs.slice(0, 4).map(job => jobTile(job)).join('')}</div>`, 'candidate-recommended-panel', action('View all', "goto('Jobs','Discover Jobs')"))}
+          ${panel('Community', `<div class="candidate-community-preview">${posts.map(post => `<article>${image(post.img)}<div><strong>${escape(post.title)}</strong><small>${escape(post.name)}</small>${action('Read story', `viewPost(${post.id})`)}</div></article>`).join('')}</div>`, 'candidate-community-panel', action('View all', "goto('Community','Home')"))}
         </div>
         <div class="candidate-dashboard-right">
           ${attention}
           ${panel('Upcoming Interview', interview ? `<p class="candidate-interview-role"><strong>${escape(interview.co)}</strong><br>${escape(interview.role)}</p><p>29 Oct 2026 · 2:00 pm<br>Google Meet</p><div class="utilityRow">${button('View details', `applicationDetail(${q(interview.role)})`, 'small')}${button('Add to calendar', 'downloadCalendar()', 'small')}</div>` : '<p>No demo interview is scheduled.</p>', 'candidate-interview')}
-          ${panel('Companies Watchlist', following.map(company => `<div class="candidate-watch"><strong>${escape(company.name)}</strong><span>${company.jobs} jobs</span></div>`).join('') || '<p>Follow companies to see them here.</p>', '', action('View all', "goto('Companies','Following')"))}
-          ${panel('Upcoming Events', image('office2', 'candidate-event-art') + '<p><strong>Marketing Career Talk</strong><br>7 Nov · Webinar</p>', '', action('View events', "goto('Community','Events')"))}
+          ${panel('Companies Watchlist', following.map(company => `<div class="candidate-watch"><strong>${escape(company.name)}</strong><span>${company.jobs} jobs</span></div>`).join('') || '<p>Follow companies to see them here.</p>', 'candidate-watchlist', action('View all', "goto('Companies','Following')"))}
+          ${panel('Upcoming Events', `<div class="candidate-event-body">${image('office2', 'candidate-event-art')}<p><strong>Marketing Career Talk</strong><br>Webinar · Online</p><time datetime="2026-11-07"><b>7</b>Nov</time></div>`, 'candidate-event-panel', action('View events', "goto('Community','Events')"))}
         </div>
       </div>
       <footer class="candidate-dashboard-footer"><span>© 2026 Beamish. All rights reserved.</span><span>Made for Malaysia’s next generation</span></footer>

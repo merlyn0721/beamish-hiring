@@ -195,3 +195,51 @@
 }
 
 .candidate-refresh #bs-assist-root #bs-trigger { background: transparent !important; box-shadow: none !important; }
+
+.candidate-job-identity { display: flex; gap: 6px; align-items: start; }
+.candidate-job-identity small { display: block; margin-top: 3px; }
+.candidate-company-mark {
+  display: grid; place-items: center; flex: 0 0 24px; height: 24px;
+  border-radius: 6px; background: #e5eaff; color: #1e36b6; font-size: .6rem; font-weight: 850;
+}
+.candidate-compact-job > .candidate-dashboard-link {
+  margin-top: 3px; padding: 4px 9px; border-radius: 999px;
+  background: #1838e8; color: white;
+}
+.candidate-featured .candidate-feature-art { height: 105px; }
+.candidate-event-body { display: grid; grid-template-columns: minmax(60px, 1.25fr) minmax(0, 1fr) auto; align-items: center; gap: 8px; }
+.candidate-event-body time { display: grid; place-items: center; padding: 5px 7px; border-radius: 8px; background: #e2ecff; font-size: .68rem; }
+.candidate-event-body time b { font-size: 1rem; }
+.candidate-profile-panel { display: flex; flex-direction: column; }
+.candidate-profile-details { display: flex; flex-direction: column; flex: 1; }
+.candidate-profile-actions { margin-top: auto; padding-top: 20px; }
+.candidate-refresh #view .candidate-profile-actions .blue { background: #1737e6; }
+.candidate-profile-actions .btn:not(.blue) { border: 1px solid #1737e6; color: #142bc4; background: transparent; }
+
+@media (min-width: 1181px) {
+  .candidate-dashboard-grid {
+    grid-template-columns: minmax(190px, 1fr) repeat(6, minmax(0, .43fr)) minmax(200px, 1.05fr);
+    grid-template-areas:
+      "profile live live live live live live attention"
+      "profile trio trio trio trio trio trio interview"
+      "profile recommended recommended recommended recommended recommended recommended watchlist"
+      "profile community community community community community events events";
+    align-items: stretch;
+  }
+  .candidate-dashboard-center, .candidate-dashboard-right { display: contents; }
+  .candidate-profile-panel { grid-area: profile; }
+  .candidate-live { grid-area: live; }
+  .candidate-attention { grid-area: attention; }
+  .candidate-dashboard-trio { grid-area: trio; }
+  .candidate-interview { grid-area: interview; }
+  .candidate-recommended-panel { grid-area: recommended; }
+  .candidate-watchlist { grid-area: watchlist; }
+  .candidate-community-panel { grid-area: community; }
+  .candidate-event-panel { grid-area: events; }
+  .candidate-refresh .side .navItem:last-child { margin-top: auto; }
+  .candidate-refresh .side #sideNav { display: flex; flex-direction: column; flex: 1; }
+}
+@media (max-width: 760px) {
+  .candidate-event-body { grid-template-columns: minmax(0, 1fr) auto; }
+  .candidate-event-art { grid-column: 1 / -1; }
+}
