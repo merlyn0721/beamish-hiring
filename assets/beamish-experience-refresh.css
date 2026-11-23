@@ -1,0 +1,188 @@
+/* Shared visual language for public pages, account screens and workspaces. */
+:root {
+  --bm-canvas: #f3f5fc;
+  --bm-surface: #fff;
+  --bm-ink: #151b36;
+  --bm-muted: #515e79;
+  --bm-line: #dce2ef;
+  --bm-brand: #2925ce;
+  --bm-accent: #eae9ff;
+  --bm-night: #151643;
+  --bm-radius: 18px;
+  --bm-shadow: 0 8px 26px #1923530d;
+  --bm-display: "Beamish Display", Inter, system-ui, sans-serif;
+}
+
+.bm-skip {
+  position: fixed;
+  inset: 12px auto auto 12px;
+  z-index: 2147480001;
+  transform: translateY(calc(-100% - 16px));
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--bm-night);
+  color: #fff;
+  font: 700 .9rem system-ui, sans-serif;
+}
+.bm-skip:focus { transform: none; }
+.bm-ui :is(a, button, input, select, textarea, [role="button"]):focus-visible {
+  outline: 3px solid #5b56ea !important;
+  outline-offset: 3px;
+}
+.bm-ui [tabindex="-1"]:focus { outline: none; }
+.bm-ui :is(input, select, textarea):user-invalid { border-color: #ad2747; }
+
+/* Public landing banner keeps its current styles, artwork and interactions. */
+.bm-public :is(.ref-search-area, .ref-companies, .ref-topics, .ref-trending, .ce-content) {
+  color: var(--bm-ink);
+}
+.bm-public :is(.ref-trending, .ref-companies, .ref-topics) {
+  padding: clamp(18px, 3vw, 40px);
+  background: var(--bm-canvas);
+  border: 1px solid var(--bm-line);
+  border-radius: var(--bm-radius);
+}
+.bm-public :is(.ref-section-heading, .ce-section-title) h2 {
+  font-family: var(--bm-display);
+  letter-spacing: -.035em;
+}
+.bm-public :is(.ref-job, .ref-company, .ref-story, .ce-story-card, .ce-surface, .rj-card-front, .rj-card-back) {
+  border-color: var(--bm-line) !important;
+  border-radius: var(--bm-radius) !important;
+  box-shadow: var(--bm-shadow);
+}
+.bm-public :is(.ref-searchbox, .ce-story-search) {
+  border-color: var(--bm-line);
+  border-radius: var(--bm-radius);
+  box-shadow: var(--bm-shadow);
+}
+.bm-public :is(.ce-hero, .rj-banner) { border-radius: var(--bm-radius); }
+.bm-public :is(.ce-content, .ref-search-area) .ref-button.navy,
+.bm-public .rj-apply {
+  background: var(--bm-brand) !important;
+  color: #fff !important;
+}
+.bm-public .ref-footer { background: var(--bm-canvas) !important; border-top: 1px solid var(--bm-line); }
+
+/* Account and staff access. */
+.bm-account { background: var(--bm-canvas) !important; }
+.bm-account :is(.authTop, .login-header, .header) { background: #fff; }
+.bm-account :is(.authIntro, .login-card h2, .login-head h2) { color: var(--bm-ink); }
+.bm-account :is(.login-card, .formBody, .right) {
+  border-color: var(--bm-line) !important;
+  border-radius: var(--bm-radius) !important;
+  box-shadow: var(--bm-shadow);
+}
+.bm-account .login-hero { background: linear-gradient(140deg, #302ce2, #19177e); }
+.bm-account .login-header { border-bottom: 1px solid var(--bm-line); margin-bottom: 14px; }
+.bm-account .login-layout { padding-bottom: clamp(26px, 4vw, 52px); }
+.bm-account .login-footer { background: #e9edf8; }
+.bm-account .login-card .sign-in,
+.bm-account .authScene button.primary,
+.bm-account .sign-in { background: var(--bm-brand) !important; color: #fff !important; }
+.bm-account .login-card .sign-in:hover,
+.bm-account .authScene button.primary:hover { background: #1c198f !important; }
+.bm-account .login-card .roleTile.active,
+.bm-account .authScene .roleTile.active { background: var(--bm-accent); }
+.bm-account .authScene .tileMain small { font-size: .81rem; }
+.bm-account .authScene :is(.m7Back button, .modeLine) { font-size: .82rem; }
+.bm-account .authScene .primary.continue { min-height: 44px; }
+
+/* Candidate, employer, admin, finance and CMS workspaces. */
+.bm-workspace :is(.mainScroll, .main > .content, #main) {
+  background: var(--bm-canvas) !important;
+}
+.bm-workspace :is(.top, .topbar) {
+  background: #fff !important;
+  border-bottom: 1px solid var(--bm-line) !important;
+}
+.bm-workspace :is(.side, .sidebar) {
+  background: #f9faff !important;
+  border-right: 1px solid var(--bm-line) !important;
+}
+.bm-workspace :is(.sideNav, .navlist) :is(.navBtn, .navbutton) {
+  border-radius: 11px !important;
+}
+.bm-workspace :is(.navBtn, .navbutton, .mobileBottom button, .bottomNav button).active {
+  background: var(--bm-accent) !important;
+  color: #201b9e !important;
+  box-shadow: inset 3px 0 var(--bm-brand) !important;
+}
+.bm-workspace :is(.heroBand, .v24-rolehero) {
+  background: linear-gradient(110deg, #1e1b83, #3833cf) !important;
+  border-radius: var(--bm-radius) !important;
+  color: #fff !important;
+}
+.bm-workspace :is(.heroBand, .v24-rolehero) :is(h1, h2, p) { color: inherit !important; }
+.bm-workspace :is(.overviewPage, .content, #main) :is(.card, .panel, .v24-card, .v24-table):not(.accent) {
+  border-color: var(--bm-line) !important;
+  border-radius: var(--bm-radius) !important;
+  box-shadow: var(--bm-shadow);
+}
+.bm-workspace :is(.page-head, .v24-header, .heroBand) :is(h1, h2) {
+  font-family: var(--bm-display);
+  letter-spacing: -.035em;
+}
+.bm-workspace :is(button, a).primary:is(.btn, .button) {
+  background: var(--bm-brand) !important;
+  color: #fff !important;
+}
+.bm-workspace :is(.datatable, .v24-table):focus-visible {
+  outline: 3px solid #5b56ea;
+  outline-offset: 3px;
+}
+
+/* Portal directory and subscription reference pages. */
+.bm-directory, .bm-reference { background: var(--bm-canvas) !important; }
+.bm-directory .hero {
+  background: var(--bm-night) !important;
+  border: 0 !important;
+  border-radius: 24px !important;
+  color: #fff !important;
+  padding: clamp(28px, 5vw, 64px) !important;
+}
+.bm-directory .hero :is(h1, p) { color: inherit !important; }
+.bm-directory .portal-grid { gap: clamp(14px, 2vw, 24px); }
+.bm-directory :is(.portal, .map) {
+  border-color: var(--bm-line) !important;
+  border-radius: var(--bm-radius) !important;
+  box-shadow: var(--bm-shadow);
+}
+.bm-directory .portal { background: #fff !important; color: var(--bm-ink) !important; }
+.bm-directory .portal :is(h2, p) { color: inherit !important; }
+.bm-directory .portal .go { color: var(--bm-brand) !important; font-weight: 800; }
+.bm-directory .portal:hover { border-color: #7975da !important; }
+.bm-reference main { color: var(--bm-ink); }
+
+@media (max-width: 760px) {
+  .bm-public :is(.ref-trending, .ref-companies, .ref-topics) { padding: 16px; }
+  .bm-account :is(.as-field, .login-field) :is(input, select, textarea) { font-size: 16px; }
+  .bm-account :is(.password-toggle, .forgot-password, .sign-in, .google-sign-in) { min-height: 44px; }
+  .bm-account .login-card { grid-row: 1; }
+  .bm-account .login-layout .login-hero { padding-block: 24px; }
+}
+
+.bm-public .ref-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.bm-directory .directory-signin { color: var(--bm-muted); margin: 22px 0; }
+.bm-directory .directory-signin a { color: var(--bm-brand); font-weight: 750; }
+
+.bm-public :is(.bf-company, .bf-step, .bs-story, .bs-dashboard, .bs-newsletter, .bs-testimonial) {
+  border-color: var(--bm-line) !important;
+  border-radius: var(--bm-radius) !important;
+  box-shadow: var(--bm-shadow);
+}
+.bm-public :is(.bs-latest, .bs-interviews, .bs-stories, .bs-employers, .bf-why) {
+  color: var(--bm-ink);
+}
+.bm-public :is(.bf-company-search, .bs-feed-tabs, .bs-dashboard-tabs) {
+  border-color: var(--bm-line);
+  border-radius: 12px;
+}
+.bm-public :is(.bs-career, .bs-employers, .bf-companies, .bs-community-new) :is(.ref-button.navy, .bf-follow) {
+  background: var(--bm-brand) !important;
+  color: white !important;
+}

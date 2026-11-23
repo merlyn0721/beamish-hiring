@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="../assets/beamish-assist.css?v=20261112-layout5">
   <link rel="stylesheet" href="../assets/beamish-login.css">
 </head>
-<body data-auth-mode="login">
+<body class="bm-ui bm-account" data-auth-mode="login">
+<a class="bm-skip" href="#bm-main">Skip to main content</a>
+
   <header class="login-header">
     <a href="../public/index.html#home"><img class="login-logo" src="../assets/beamish-brand-logo.png" alt="Beamish home"></a>
     <nav aria-label="Main navigation">
@@ -20,7 +22,7 @@
     </nav>
   </header>
 
-  <main class="login-layout">
+  <main class="login-layout" id="bm-main" tabindex="-1">
     <section class="login-hero" aria-labelledby="welcome-heading">
       <div class="hero-photo" aria-hidden="true"></div>
       <div class="hero-copy">
@@ -113,5 +115,7 @@
   <script src="../assets/beamish-assist.js?v=20261112-layout5"></script>
   <script src="../assets/auth-v7.js?v=login-layout"></script>
   <script src="../assets/beamish-login.js"></script>
+<link rel="stylesheet" href="../assets/beamish-experience-refresh.css?v=1">
+<script defer src="../assets/beamish-experience-refresh.js?v=1"></script>
 </body>
 </html>

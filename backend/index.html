@@ -37,10 +37,12 @@
 @media(max-width:600px){.page.step-form .wrap{min-height:0;display:block}.page.step-form .right{width:100%}.page.step-select .wrap{padding-top:25px}.page.step-select .role-tags{display:none}.page.step-form .form-area{padding:20px!important}}
 </style>
 <link rel="stylesheet" href="../assets/beamish-unified-v14.css"></head>
-<body>
+<body class="bm-ui bm-account">
+<a class="bm-skip" href="#bm-main">Skip to main content</a>
+
 <div class="page step-select">
 <header class="header"><div class="brand"><a href="../portal-hub/index.html" aria-label="Beamish home"><img src="../assets/beamish-logo.png" alt="Beamish"></a><i class="brandline"></i><span class="brand-caption">BACKEND PORTAL HUB</span></div><div class="header-right"><span class="staff-tag"><i class="online"></i> Internal workspace</span><a class="outline-btn" href="../portal-hub/index.html">← All Portals</a><a class="public-pill" href="../auth/index.html">Public Login ↗</a></div></header>
-<main class="wrap">
+<main class="wrap" id="bm-main" tabindex="-1">
 <section class="left">
 <div class="intro"><div class="kicker">BEAMISH / INTERNAL WORKSPACE</div><h1>Your control centre <em>starts here.</em></h1><p>One connected platform. Three dedicated teams. Select your administrator role to access the tools and data assigned to your workspace.</p></div>
 <div class="hero-band"><div><span>MODERN · YOUTHFUL · CONFIDENT</span><h2>Better control.<br>Clearer ownership.</h2></div></div>
@@ -83,4 +85,6 @@ function hubContinue(){document.querySelector('.page').classList.remove('step-se
 function hubBack(){document.querySelector('.page').classList.add('step-select');document.querySelector('.page').classList.remove('step-form');window.scrollTo({top:0,behavior:'instant'});}
 const query=new URLSearchParams(window.location.search);if(roleDetails[query.get('role')])chooseRole(query.get('role'));setAccessMode(query.get('mode'));if(query.get('step')==='form')hubContinue();
 </script>
-<script src="../assets/beamish-unified-v14.js" data-portal="backend-hub"></script><link rel="stylesheet" href="../assets/beamish-v16-system.css"><link rel="stylesheet" href="../assets/beamish-brand.css?v=public-auth-layouts"><script src="../assets/beamish-brand.js?v=public-auth-layouts"></script></body></html>
+<script src="../assets/beamish-unified-v14.js" data-portal="backend-hub"></script><link rel="stylesheet" href="../assets/beamish-v16-system.css"><link rel="stylesheet" href="../assets/beamish-brand.css?v=public-auth-layouts"><script src="../assets/beamish-brand.js?v=public-auth-layouts"></script><link rel="stylesheet" href="../assets/beamish-experience-refresh.css?v=1">
+<script defer src="../assets/beamish-experience-refresh.js?v=1"></script>
+</body></html>
