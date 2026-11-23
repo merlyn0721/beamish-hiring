@@ -2,7 +2,7 @@
 (function(){'use strict';const B=window.BeamishV9;if(!B)return;const e=B.esc;
 const sample=[{station:'MRT Muzium Negara',line:'MRT Kajang Line',commute:'Transport access · walking distance unverified'},{station:'LRT Taman Jaya',line:'LRT Kelana Jaya Line',commute:'Transit access · walking distance unverified'},{station:'MRT Bukit Bintang',line:'MRT Kajang Line',commute:'Transit access · walking distance unverified'},{station:'LRT SS15',line:'LRT Kelana Jaya Line',commute:'Transit access · walking distance unverified'}];
 const synced=(B.read('beamish_employer_demo',{}).jobs||[]).filter(j=>Number(j.id)>1000&&j.status==='Live');
-for(const j of synced){if(!DATA.jobs.some(x=>x.id===j.id))DATA.jobs.push({id:j.id,role:j.role,co:B.business()?.company||'Verified Employer',place:j.location||j.workplace||'Malaysia',mode:j.type||'On-site',pay:j.pay||'Salary on request',match:78,img:'office',type:j.dept||'Other',station:j.station||'',line:j.line||'',commute:j.commute||''})}
+for(const j of synced){if(!DATA.jobs.some(x=>x.id===j.id))DATA.jobs.push({id:j.id,role:j.role,co:B.business()?.company||'Verified Employer',place:j.location||j.workplace||'Malaysia',mode:j.type||'On-site',pay:j.pay||'Salary on request',match:78,img:'office',type:j.dept||'Other',station:j.station||'',line:j.line||'',commute:j.commute||'',urgent:j.urgent===true})}
 DATA.jobs.forEach((j,i)=>{j.station=j.station||sample[i%sample.length].station;j.line=j.line||sample[i%sample.length].line;j.commute=j.commute||sample[i%sample.length].commute});
 let transportSearch='';
 const prevJobRow=jobRow;
