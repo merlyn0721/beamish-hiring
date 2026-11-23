@@ -13,8 +13,51 @@ function selectDate(v){day=v;renderContent()}
 function addTime(v){try{let arr=JSON.parse(localStorage.getItem('beamish_demo_availability')||'[]');if(!arr.includes(v))arr.push(v);localStorage.setItem('beamish_demo_availability',JSON.stringify(arr));toast('Date marked available (demo)')}catch(e){toast('Could not save demo date')}}
 function eventPage(){return `<div class="v18-events-layout"><div>${baseCommunity()}</div><aside>${calendar()}</aside></div>`}
 let baseCommunity=()=>'';
-function accountFields(){let data={};try{data=JSON.parse(localStorage.getItem('beamish_candidate_contact_v18')||'{}')}catch(e){}return `<section class="v18-account-card"><div class="v18-section-head"><div><span class="v18-kicker">ACCOUNT DETAILS</span><h2>My contact & recovery details</h2></div></div><div class="v18-account-fields">${[['Full name','name',S.profile.name],['Email','email',data.email||'amanda@example.demo'],['Phone','phone',data.phone||''],['Address','address',data.address||'']].map(([label,key,val])=>`<label>${label}<input id="v18-ac-${key}" value="${esc(val)}" placeholder="${label}"></label>`).join('')}</div><button class="v18-primary" onclick="BeamishCandidate18.saveAccount()">Save Details</button><div class="v18-account-recovery"><h3>Account security & recovery</h3><p>Passwords are not viewable by administrators. A real platform must use a secure verification and password-reset flow.</p><button class="v18-outline" onclick="toast('Password reset request: demo only. No email sent.')">Request Password Reset</button></div></section>`}
-function saveAccount(){const data={};for(const key of ['name','email','phone','address'])data[key]=$(`#v18-ac-${key}`)?.value.trim()||'';if(!data.name||!/^\S+@\S+\.\S+$/.test(data.email)){toast('Enter your name and a valid email');return}S.profile.name=data.name;save();localStorage.setItem('beamish_candidate_contact_v18',JSON.stringify(data));toast('Contact details saved in this browser demo');renderContent()}
+function accountFields() {
+  let contact = {};
+  try {
+    contact = JSON.parse(localStorage.getItem('beamish_candidate_contact_v18') || '{}') || {};
+  } catch {}
+  const fields = [
+    ['Full name', 'name', 'text', 'name', S.profile.name],
+    ['Email', 'email', 'email', 'email', contact.email || V5.account.email],
+    ['Phone', 'phone', 'tel', 'tel', contact.phone],
+    ['Address', 'address', 'text', 'street-address', contact.address]
+  ];
+  const preferences = [
+    ['Language', 'language', ['English', 'Bahasa Malaysia', '简体中文']],
+    ['Time zone', 'timezone', ['Asia/Kuala_Lumpur', 'Asia/Singapore']]
+  ];
+  return title('Account settings', 'Update your contact details, preferences and recovery options.') +
+    strip(NAV.Settings, S.sub, 'subTo', true) +
+    `<div class="candidate-account-layout">
+      <section class="card candidate-account-panel" aria-labelledby="candidateContact">
+        <h2 id="candidateContact">Contact details</h2>
+        <form onsubmit="event.preventDefault(); BeamishCandidate18.saveAccount()">
+          <div class="v18-account-fields">${fields.map(([label, key, type, autocomplete, value]) =>
+            `<label for="v18-ac-${key}">${label}<input id="v18-ac-${key}" type="${type}" autocomplete="${autocomplete}" value="${esc(value || '')}" ${key === 'name' || key === 'email' ? 'required' : ''}></label>`
+          ).join('')}</div>
+          <button class="v18-primary" type="submit">Save contact details</button>
+        </form>
+      </section>
+      <section class="card candidate-account-panel" aria-labelledby="candidatePreferences">
+        <h2 id="candidatePreferences">Language &amp; region</h2>
+        ${preferences.map(([label, key, values]) =>
+          `<label class="candidate-preference">${label}<select onchange="settingsSelect('${key}',this.value)">${values.map(value =>
+            `<option ${value === V5.account[key] ? 'selected' : ''}>${value}</option>`).join('')}</select></label>`
+        ).join('')}
+      </section>
+      <section class="card candidate-account-panel candidate-recovery-panel" aria-labelledby="candidateRecovery">
+        <h2 id="candidateRecovery">Security &amp; data</h2>
+        <div class="utilityRow">
+          <button class="v18-outline" onclick="toast('Password reset request: demo only. No email sent.')">Request password reset</button>
+          <button class="v18-outline" onclick="downloadMyData()">Download my data</button>
+          <button class="v18-outline" onclick="document.getElementById('bs-trigger')?.click()">Help &amp; support</button>
+        </div>
+      </section>
+    </div>`;
+}
+function saveAccount(){const data={};for(const key of ['name','email','phone','address'])data[key]=$(`#v18-ac-${key}`)?.value.trim()||'';if(!data.name||!/^\S+@\S+\.\S+$/.test(data.email)){toast('Enter your name and a valid email');return}S.profile.name=data.name;V5.account.email=data.email;save();saveV5();localStorage.setItem('beamish_candidate_contact_v18',JSON.stringify(data));toast('Contact details saved in this browser demo');renderContent()}
 function follow(name,button){let key='beamish_v18_following_demo',v=[];try{v=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){}v=v.includes(name)?v.filter(x=>x!==name):[...v,name];localStorage.setItem(key,JSON.stringify(v));button.classList.toggle('following',v.includes(name));button.textContent=v.includes(name)?'✓ Following':'+ Follow'}
 function cleanupSettings(){if(S.page==='Settings'){document.querySelectorAll('#view button,#view a').forEach(el=>{if(/^(End Session|Sign Out|Log Out)$/i.test(el.textContent.trim()))el.remove()})}}
 function init(){if(typeof NAV==='undefined')return;const oldProfile=profile;const oldCareer=career;baseCareer=()=>oldCareer();baseCommunity=community;
@@ -28,7 +71,7 @@ function init(){if(typeof NAV==='undefined')return;const oldProfile=profile;cons
  const followBox=`<div class="v18-follow-card"><h3>Suggested People & Companies</h3><p class="v18-subtle">Follow useful voices and teams</p>${suggestions.map(([name,desc,initial])=>`<div class="v18-follow-row"><span class="v18-follow-avatar">${initial}</span><div class="info"><b>${name}</b><small>${desc}</small></div><button onclick="BeamishCandidate18.follow('${name}',this)">+ Follow</button></div>`).join('')}</div>`;
  return html.includes('</aside></div>')?html.replace('</aside></div>',followBox+'</aside></div>'):html+followBox
 };
- const prevSettings=settings;window.settings=function(){const html=prevSettings();return S.sub==='Account'?html+accountFields():html};
+ const prevSettings=settings;window.settings=function(){return S.sub==='Account'?accountFields():prevSettings()};
  const prevContent=renderContent;window.renderContent=function(){prevContent();cleanupSettings()};window.render();}
 window.BeamishCandidate18={savePrefs,moveMonth,selectDate,addTime,saveAccount,follow};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
