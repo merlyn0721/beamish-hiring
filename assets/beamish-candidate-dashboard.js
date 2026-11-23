@@ -10,10 +10,30 @@
     return `<article class="candidate-compact-job"><div class="candidate-job-identity"><span class="candidate-company-mark" aria-hidden="true">${initials}</span><div><strong>${escape(job.role)}</strong><small>${company}</small></div></div><span>${escape(job.place)}</span><span>${escape(job.pay)}</span>${action(featured ? 'View details' : 'View job', `jobDetail(${job.id})`)}</article>`;
   }
 
+  function milestoneTrack(application) {
+    const stages = ['Applied', 'Review', 'Interview', 'Offer'];
+    const status = { Applied: 0, Viewed: 1, Shortlisted: 1, Interview: 2, Offer: 3, Hired: 3 };
+    const current = status[application.stage] ?? -1;
+    return `<ol class="candidate-milestones" aria-label="Application status: ${escape(application.stage)}">${stages.map((stage, index) =>
+      `<li class="${index <= current ? 'reached' : ''}" ${index === current ? 'aria-current="step"' : ''}>${stage}</li>`
+    ).join('')}</ol>`;
+  }
+
+  function nextStep(label, detail, command) {
+    return `<button type="button" onclick="${command}"><span class="candidate-step-icon" aria-hidden="true">›</span><span><strong>${label}</strong><small>${detail}</small></span></button>`;
+  }
+
   function dashboard() {
     const info = S.profile;
     const name = info.name?.trim().split(/\s+/)[0] || 'there';
     const completion = profileCompletion();
+    const status = document.getElementById('candidateDashboardStatus');
+    if (status) {
+      const visibility = V5.privacy.visibility;
+      status.textContent = visibility === 'Private'
+        ? 'Hi, ' + name + '! Your profile is private.'
+        : 'Hi, ' + name + '! Your profile is visible to ' + (visibility === 'Public' ? 'everyone.' : 'employers.');
+    }
     const jobs = [...DATA.jobs].sort((a, b) => b.match - a.match);
     const featured = jobs[0];
     const interviews = DATA.apps.filter(app => app.stage === 'Interview');
@@ -46,9 +66,11 @@
       <div><b>82</b><span>Sample profile views</span></div><div><b>${following.length}</b><span>Followed companies</span></div><div><b>${S.savedJobs.length}</b><span>Saved jobs</span></div>
     </div>`, 'candidate-live');
     const attention = panel('Your next steps', `<div class="candidate-next-steps">
-      ${interview ? action('Review your interview', "goto('Applications','Interviews')") : action('Review applications', "goto('Applications','My Applications')")}
-      ${action('Complete your profile', "goto('Profile','Profile Studio')")}
-      ${action(`Explore ${jobs.length} job matches`, "goto('Jobs','Discover Jobs')")}
+      ${interview
+        ? nextStep('Review your interview', escape(interview.co), "goto('Applications','Interviews')")
+        : nextStep('Review applications', 'Check your latest status', "goto('Applications','My Applications')")}
+      ${nextStep('Complete your profile', 'Update your skills and portfolio', "goto('Profile','Profile Studio')")}
+      ${nextStep(jobs.length + ' job matches', 'Explore roles that fit your profile', "goto('Jobs','Discover Jobs')")}
     </div>`, 'candidate-attention');
 
     return `<div class="candidate-dashboard">
@@ -60,7 +82,7 @@
           ${live}
           <div class="candidate-dashboard-trio">
             ${panel('Picked for You', featured ? image(featured.img, 'candidate-feature-art') + jobTile(featured, true) : '<p>No jobs available.</p>', 'candidate-featured', action('View all', "goto('Jobs','Discover Jobs')"))}
-            ${panel('My Applications', DATA.apps.slice(0, 3).map(app => `<article class="candidate-application"><strong>${escape(app.role)}</strong><small>${escape(app.co)}</small>${appStageHtml(app)}</article>`).join('') || '<p>No applications yet.</p>', '', action('View all', "goto('Applications','My Applications')"))}
+            ${panel('My Applications', DATA.apps.slice(0, 3).map(app => `<article class="candidate-application"><strong>${escape(app.role)}</strong><small>${escape(app.co)}</small>${milestoneTrack(app)}</article>`).join('') || '<p>No applications yet.</p>', '', action('View all', "goto('Applications','My Applications')"))}
             ${panel('Your Career Match', jobs.slice(0, 3).map(job => `<div class="candidate-match"><div><strong>${escape(job.role)}</strong><b>${job.match}%</b></div><progress value="${job.match}" max="100" aria-label="${escape(job.role)} match"></progress></div>`).join(''), '', action('View all', "goto('Career Match','My Match')"))}
           </div>
           ${panel('Recommended Jobs for You', `<div class="candidate-recommended">${jobs.slice(0, 4).map(job => jobTile(job)).join('')}</div>`, 'candidate-recommended-panel', action('View all', "goto('Jobs','Discover Jobs')"))}
